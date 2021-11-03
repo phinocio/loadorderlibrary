@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.2.0](#v520)
 - [v5.1.3](#v513)
 - [v5.1.2](#v512)
 - [v5.1.1](#v511)
@@ -88,6 +89,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.2.0
+> 2021-11-02
+
+## Fixed
+- Fixed account deletion confirmation modal not popping up, effectively making account deletion unusable
 
 # v5.1.3
 > 2021-09-13
