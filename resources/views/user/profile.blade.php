@@ -128,7 +128,7 @@
 			<div class="card-body">
 				<p class="card-text">Deleting your account will delete it and any lists associated with it from the database. Please ensure this is what you intend to do as it can not be undone.</p>
 
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccount">
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount">
 					Delete Account
 				</button>
 			</div>
@@ -144,9 +144,7 @@
 		<div class="modal-content bg-dark text-white">
 			<div class="modal-header">
 				<h5 class="modal-title text-danger" id="deleteAccountLabel">Delete Account</h5>
-				<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+				<button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
 				Deleting your account will delete it and any lists associated with it from the database. Please ensure this is what you intend to do as it can not be undone.
