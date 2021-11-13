@@ -1,7 +1,7 @@
 <div class="row d-flex align-items-stretch">
 	<div class="col-md-12">
 		<div class="card text-white bg-dark mb-3">
-			<div class="card-header d-flex justify-content-between align-items-start">
+			<div class="card-header d-flex justify-content-between align-items-start text-break">
 				<div class="d-flex flex-column">
 					<h3><a href="/lists/{{ $loadOrder->slug }}" class="text-capitalize">{{ $loadOrder->name }}</a>
 						<small>
@@ -17,13 +17,12 @@
 						</a>
 					</small>
 					@if($loadOrder->website)
-					<a href="https://{{ $loadOrder->website }}" target="_blank" rel="noopener noreferrer">{{ $loadOrder->website }}
+					<a class="" href="https://{{ $loadOrder->website }}" target="_blank" rel="noopener noreferrer">{{ $loadOrder->website }}
 						<x-icons.external-site />
 					</a>
-					<br />
 					@endif
 				</div>
-
+				
 				<div class="d-flex flex-column align-items-end">
 					<small>
 						<em><a class="game-link" href="/lists?game={{ $loadOrder->game->name }}">{{ $loadOrder->game->name }}</a></em>
