@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.2.1](#v521)
 - [v5.2.0](#v520)
 - [v5.1.3](#v513)
 - [v5.1.2](#v512)
@@ -89,6 +90,22 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.2.1
+> 2021-11-13
+
+## Fixed
+- Fixed game name and website link breaking out of the box on non-firefox mobile browsers
+
+- NPM
+	- Updated `sass` from `1.37.5` -> `1.43.4`
+	- Updated `sass-loader` from `12.1.0` -> `12.3.0`
+	- Updated `laravel-mix` from `6.0.27` -> `6.0.39`
+- Composer
+	- Updated with `composer update`
+
+## Closed
+- https://github.com/phinocio/loadorderlibrary/issues/58
 
 # v5.2.0
 > 2021-11-02
