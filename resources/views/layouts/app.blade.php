@@ -110,7 +110,7 @@
 		</main>
 
 		<footer>
-			<div class="container d-flex flex-column align-items-center">
+			<div class="container d-flex flex-column align-items-center text-center">
 				<div class="text-white">
 					<p>
 						Load Order Library &copy; 2021 Phinocio
