@@ -96,6 +96,8 @@
 
 ## Fixed
 - Fixed game name and website link breaking out of the box on non-firefox mobile browsers
+- Fixed footer text wrap not being centered
+- Added missing indication that description is optional on upload and edit
 
 - NPM
 	- Updated `sass` from `1.37.5` -> `1.43.4`
