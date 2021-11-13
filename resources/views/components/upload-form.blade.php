@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="form-group mb-3">
-		<label for="description">Description</label>
+		<label for="description">Description (optional)</label>
 		<textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3">{{ old('description') }}</textarea>
 		@error('description')
 		<span class="invalid-feedback" role="alert">
