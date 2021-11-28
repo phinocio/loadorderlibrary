@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.3.0](#v530)
 - [v5.2.1](#v521)
 - [v5.2.0](#v520)
 - [v5.1.3](#v513)
@@ -90,6 +91,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.0
+> 2021-11-28
+
+## Added
+- Added support for a few more games that MO2 also supports
 
 # v5.2.1
 > 2021-11-13
