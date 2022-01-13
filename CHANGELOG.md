@@ -4,6 +4,9 @@
 
 <!-- TOC depthto:1 -->
 
+- [Load Order Library](#load-order-library)
+- [Table of Contents](#table-of-contents)
+- [v5.3.1](#v531)
 - [v5.3.0](#v530)
 - [v5.2.1](#v521)
 - [v5.2.0](#v520)
@@ -92,6 +95,17 @@
 
 <!-- /TOC -->
 
+# v5.3.1
+> 2022-01-13
+
+## Internals
+- NPM
+	- Updated `browser-sync` from `2.27.5` -> `2.27.7`
+	- Updated `sass` from `1.43.4` -> `1.48.0`
+	- Updated `sass-loader` from `12.3.0` -> `12.4.0`
+- Composer
+	- Updated with `composer update`
+
 # v5.3.0
 > 2021-11-28
 
@@ -106,6 +120,7 @@
 - Fixed footer text wrap not being centered
 - Added missing indication that description is optional on upload and edit
 
+## Internals
 - NPM
 	- Updated `sass` from `1.37.5` -> `1.43.4`
 	- Updated `sass-loader` from `12.1.0` -> `12.3.0`
