@@ -45,7 +45,7 @@ Route::post('admin/users/verify/{user:id}', 'AdminController@verify')->name('adm
 Route::get('/admin/backups', 'AdminController@backups')->name('admin.backup');
 Route::get('/admin/backups/download/{id}', 'AdminController@downloadBackup')->name('admin.download-backup');
 Route::delete('/admin/backups/delete/{id}', 'AdminController@deleteBackup')->name('admin.delete-backup');
-Route::get('/admin/server-stats', 'AdminController@serverStats')->name('admin.server-stats');
+Route::get('/admin/server-metrics', 'AdminController@serverStats')->name('admin.server-metrics');
 
 // Intentional error routes for testing purposes.
 Route::get('/errors/500', 'IntentionalErrorsController@http500')->name('error.500');
