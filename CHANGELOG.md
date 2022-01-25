@@ -4,8 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
-- [Load Order Library](#load-order-library)
-- [Table of Contents](#table-of-contents)
+- [v5.3.3](#v533)
 - [v5.3.2](#v532)
 - [v5.3.1](#v531)
 - [v5.3.0](#v530)
@@ -95,6 +94,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.3
+> 2022-01-24
+
+## Added
+- Added some more icons for various devices
 
 # v5.3.2
 > 2022-01-24
