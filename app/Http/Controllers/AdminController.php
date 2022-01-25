@@ -171,4 +171,8 @@ class AdminController extends Controller
 
 		return redirect()->back();
 	}
+
+	public function serverStats() {
+		return \File::get(resource_path('static/report.html'));
+	}
 }

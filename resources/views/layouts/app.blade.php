@@ -71,6 +71,9 @@
 								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.stats') }}">
 									Stats
 								</a>
+								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.server-stats') }}">
+									Server Stats
+								</a>
 								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.users') }}">
 									User Management
 								</a>
