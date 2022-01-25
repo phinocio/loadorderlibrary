@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"version": "5.3.2",
+	"version": "5.3.3",
 	"scripts": {
 		"dev": "npm run development",
 		"development": "mix",
