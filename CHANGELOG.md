@@ -6,6 +6,7 @@
 
 - [Load Order Library](#load-order-library)
 - [Table of Contents](#table-of-contents)
+- [v5.3.2](#v532)
 - [v5.3.1](#v531)
 - [v5.3.0](#v530)
 - [v5.2.1](#v521)
@@ -94,6 +95,19 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.2
+> 2022-01-24
+
+## Added
+- Added a server metrics page so I can track things like 404 errors, unique visitors, total requests, etc. This data is all generated using `goaccess` from already existing nginx access log files and nothing leaves the server
+
+## Internals
+- NPM
+	- Updated `laravel-mix` from `6.0.39` -> `6.0.41`
+	- Updated `sass` from `1.48.0` -> `1.49.0`
+- Composer
+	- Updated with `composer update`
 
 # v5.3.1
 > 2022-01-13
