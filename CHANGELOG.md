@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.3.4](#v534)
 - [v5.3.3](#v533)
 - [v5.3.2](#v532)
 - [v5.3.1](#v531)
@@ -94,6 +95,18 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.5
+> 2022-01-26
+
+## Fixed
+- Fixed downloading files breaking because of files always being lowercase now
+
+# v5.3.4
+> 2022-01-26
+
+## Fixed
+- Fixed filenames to always be lowercase 
 
 # v5.3.3
 > 2022-01-24
