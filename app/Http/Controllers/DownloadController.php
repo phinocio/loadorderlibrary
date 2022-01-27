@@ -13,7 +13,7 @@ class DownloadController extends Controller
 		$listFiles = [];
 
 		foreach ($loadOrder->files as $file) {
-			array_push($listFiles, $file->name);
+			array_push($listFiles, strtolower($file->name));
 		}
 
 		// DL all files.
