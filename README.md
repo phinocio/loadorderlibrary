@@ -13,6 +13,7 @@ https://www.patreon.com/phinocio
 - [Features](#features)
 - [Planned Features](#planned-features)
 - [Privacy](#privacy)
+- [Transparency](#transparency)
 - [Support/Issues](#supportissues)
 - [Thanks](#thanks)
 
@@ -42,9 +43,22 @@ See [Github projects board TODOs](https://github.com/phinocio/loadorderlibrary/p
 
 # Privacy
 
-Load Order Library uses no analytic services at all. Some 3rd party tools are used, but no external requests are made, they are served with the page itself. Files uploaded are on the server until such time they are no longer associated with a list. At which point they are deleted once a week. Files also are in backups until the backup they are in was deleted (backups are created once a week and deleted once they are 30 days old).
+Load Order Library uses no analytic services at all<sup>1</sup> (update Jan 25: now uses [goaccess](https://goaccess.io/) to analyze existing Nginx access logs). Some 3rd party tools are used, but no external requests are made, they are served with the page itself. Files uploaded are on the server until such time they are no longer associated with a list. At which point they are deleted once a week. Files also are in backups until the backup they are in was deleted (backups are created once a week and deleted once they are 30 days old).
 
-Data provided is entirely for the use of the site, and does not leave the server except in the case of database backups. Passwords are hashed and never stored in plain text. The server is hosted via Digital Ocean and located in Toronto, Canada.
+Data provided is entirely for the use of the site, and does not leave the server except in the case of database backups. Passwords are hashed and never stored in plain text. The server is hosted via a Digital Ocean droplet located in Toronto, Canada.
+
+<sup>1</sup>The intention behind using goaccess to get some basic analytics for the site is so that I have a rough idea of when/if I need to upgrade the server, if there's any IPs spamming my site that I need to block, and so I don't need to use anything like Google Analytics or other privacy invasive options. 
+
+# Transparency
+
+I am working on a monthly transparency report that will be viewable at `/transparency`. Said report will detail things like:
+
+- Monthly costs
+- Monthly "income" (donations)
+- Current oldest backup/log files
+- General stats of users for the previous month (March 1 will cover stats for the month of February for example)
+
+Said transparency page will be available at some time in February, then will be updated on the 1st of every month going forward.
 
 # Support/Issues
 
