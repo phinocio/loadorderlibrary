@@ -5,6 +5,8 @@ I have a Patreon I guess. Don't feel the need to contribute or anything, I have 
 
 https://www.patreon.com/phinocio
 
+https://ko-fi.com/phinocio
+
 # Table Of Contents
 
 <!-- TOC -->
