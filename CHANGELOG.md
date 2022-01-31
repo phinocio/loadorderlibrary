@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.3.6](#v536)
 - [v5.3.5](#v535)
 - [v5.3.4](#v534)
 - [v5.3.3](#v533)
@@ -96,6 +97,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.6
+> 2022-01-31
+
+## Changed
+- Updated README to indicate more clearly what kind of analytics are being used (goaccess reading existing log files)
 
 # v5.3.5
 > 2022-01-26
