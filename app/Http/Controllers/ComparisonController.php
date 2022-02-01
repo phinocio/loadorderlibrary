@@ -54,12 +54,12 @@ class ComparisonController extends Controller
 
 
 		foreach ($list1Files as $list1File) {
-			$file1 = explode('-', $list1File->name);
+			$file1 = strtolower(explode('-', $list1File->name));
 			array_push($list1FilesCleanName, $file1[1]);
 		}
 
 		foreach ($list2Files as $list2File) {
-			$file2 = explode('-', $list2File->name);
+			$file2 = strtolower(explode('-', $list2File->name));
 			array_push($list2FilesCleanName, $file2[1]);
 		}
 
