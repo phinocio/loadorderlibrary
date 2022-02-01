@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.3.7](#v537)
 - [v5.3.6](#v536)
 - [v5.3.5](#v535)
 - [v5.3.4](#v534)
@@ -97,6 +98,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.7
+> 2022-01-31
+
+## Added
+- Added a much better 404 view so users are able to navigate elsewhere from the 404 page instead of having to navigate back first. Once a proper list search is done, users will be able to search from the 404
 
 # v5.3.6
 > 2022-01-31
