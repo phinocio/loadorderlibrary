@@ -69,16 +69,16 @@ class ComparisonController extends Controller
 		array_push($results['files'], ['missing' => $missingFiles, 'added' => $addedFiles]);
 
 		foreach ($list1Files as $list1File) {
-			$file1 = explode('-', $list1File->name);
+			$file1 = explode('-', strtolower($list1File->name));
 
 			foreach ($list2Files as $list2File) {
-				$file2 = explode('-', $list2File->name);
+				$file2 = explode('-', strtolower($list2File->name));
 				// We're working with the same file name
 				if ($file1[1] == $file2[1]) {
 
 					// Check that the hashes aren't the same, else the file is the same
 					if ($file1[0] != $file2[0]) {
-						$diff = $this->compareFiles($list1File->name, $list2File->name);
+						$diff = $this->compareFiles(strtolower($list1File->name), strtolower($list2File->name));
 
 						array_push($results['contents'], ['filename' => $file1[1], 'missing' => $diff['missing'], 'added' => $diff['added'], 'class' => 'bg-danger']);
 					} else {
