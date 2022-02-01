@@ -94,8 +94,8 @@ class ComparisonController extends Controller
 
 	private function compareFiles($file1, $file2)
 	{
-		$file1 = array_map('trim', explode("\n", trim(str_replace('*', '', \Storage::get('uploads/' . $file1)))));
-		$file2 = array_map('trim', explode("\n", trim(str_replace('*', '', \Storage::get('uploads/' . $file2)))));
+		$file1 = array_map('trim', explode("\n", trim(str_replace('*', '', \Storage::get('uploads/' . strtolower($file1))))));
+		$file2 = array_map('trim', explode("\n", trim(str_replace('*', '', \Storage::get('uploads/' . strtolower($file2))))));
 
 		$missing = array_diff($file2, $file1);
 		$added = array_diff($file1, $file2);
