@@ -21,15 +21,6 @@
 				</ul>
 			</div>
 		</div>
-
-		<div class="card bg-dark col-md-12 mb-3">
-			<div class="card-header text-white">
-				<h2>Search Lists</h2>
-			</div>
-			<div class="text-white card-body bg-dark m-0 pr-10">
-				List search goes here once it's made
-			</div>
-		</div>
 	</div>
 </div>
 
