@@ -47,6 +47,8 @@ Route::get('/admin/backups/download/{id}', 'AdminController@downloadBackup')->na
 Route::delete('/admin/backups/delete/{id}', 'AdminController@deleteBackup')->name('admin.delete-backup');
 Route::get('/admin/server-metrics', 'AdminController@serverStats')->name('admin.server-metrics');
 
+Route::get('/transparency', 'TransparencyController@index')->name('transparency');
+
 // Intentional error routes for testing purposes.
 Route::get('/errors/500', 'IntentionalErrorsController@http500')->name('error.500');
 
