@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.3.8](#v538)
 - [v5.3.7](#v537)
 - [v5.3.6](#v536)
 - [v5.3.5](#v535)
@@ -98,6 +99,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.8
+> 2022-01-31
+
+## Fixed
+- Fixed the comparison controller not lowercasing files, which now breaks the comparison as all files are lowercase on the filesystem now
 
 # v5.3.7
 > 2022-01-31
