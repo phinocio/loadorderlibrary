@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.3.9](#v539)
 - [v5.3.8](#v538)
 - [v5.3.7](#v537)
 - [v5.3.6](#v536)
@@ -99,6 +100,19 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.3.9
+> 2022-03-14
+
+## Internals
+- NPM
+	- Updated `laravel-mix` from `6.0.41` -> `6.0.43`
+	- Updated `sass` from `1.49.0` -> `1.49.9`
+	- Updated `browser-sync` from `2.27.7` -> `2.27.8`
+	- Updated `sass-loader` from `12.4.0` -> `12.6.0`
+- Composer
+	- Updated to Laravel 9
+	- Updated with `composer update`
 
 # v5.3.8
 > 2022-01-31
