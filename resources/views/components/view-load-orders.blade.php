@@ -47,6 +47,18 @@
 					<x-icons.external-site />
 				</a>
 				@endif
+				@if($loadOrder->discord)
+				<br />
+				<a href="https://{{ $loadOrder->discord }}" target="_blank" rel="noopener noreferrer">{{ $loadOrder->discord }}
+					<x-icons.external-site />
+				</a>
+				@endif
+				@if($loadOrder->readme)
+				<br />
+				<a href="https://{{ $loadOrder->readme }}" target="_blank" rel="noopener noreferrer">{{ $loadOrder->readme }}
+					<x-icons.external-site />
+				</a>
+				@endif
 			</div>
 
 			<div class="card-footer text-muted d-flex justify-content-between align-items-center">
@@ -55,11 +67,11 @@
 					<small title="{{$loadOrder->created_at->format('Y-m-d H:i:s T')}}">Uploaded {{ $loadOrder->created_at->diffForHumans() }}</small>
 
 					@if($loadOrder->expires_at)
-						<small title="{{$loadOrder->expires_at->format('Y-m-d H:i:s T')}}">
-							Expires {{ $loadOrder->expires_at->diffForHumans(
+					<small title="{{$loadOrder->expires_at->format('Y-m-d H:i:s T')}}">
+						Expires {{ $loadOrder->expires_at->diffForHumans(
 									['parts' => '1 | Carbon::ROUND | Carbon::SEQUENTIAL_PARTS_ONLY']
 								)}}
-						</small>
+					</small>
 					@endif
 				</div>
 				<div class="d-flex">

@@ -33,6 +33,8 @@ class UpdateLoadOrder extends FormRequest
 			'game' => 'required',
 			'version' => ['string', 'nullable', new ValidSemver, 'max:15'],
 			'website' => 'string|nullable',
+			'discord' => 'string|nullable',
+			'readme' => 'string|nullable',
 			'files.*' => [new ValidMimetype, 'max:128', new ValidNumLines, new ValidFilename],
 			'existing' => 'required',
 			'existing.*' => 'string',
