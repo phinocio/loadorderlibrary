@@ -119,6 +119,8 @@ class LoadOrderController extends Controller
 		$loadOrder->version 	= $validated['version'];
 		// We simply remove the http/s of an input url so we can add https:// to all on display. If a site doesn't support TSL at this point, that's on them, I'm not linking to an insecure url.
 		$loadOrder->website     = str_replace(['https://', 'http://'], '', $validated['website']);
+		$loadOrder->discord     = str_replace(['https://', 'http://'], '', $validated['discord']);
+		$loadOrder->readme      = str_replace(['https://', 'http://'], '', $validated['readme']);
 		$loadOrder->is_private  = $request->input('private') != null;
 		$loadOrder->expires_at  = $expires;
 		$loadOrder->save();
