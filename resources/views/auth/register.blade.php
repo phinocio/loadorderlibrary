@@ -27,7 +27,7 @@
 						@csrf
 
 						<div class="input-group mb-3">
-							<span class="input-group-text" id="name-label">Name</span>
+							<span class="input-group-text" id="name-label">Username</span>
 							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" aria-label="Name" aria-describedby="name-label" required autocomplete="name" autofocus>
 
 							@error('name')
