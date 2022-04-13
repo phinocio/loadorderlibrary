@@ -7,15 +7,6 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
-			<div class="alert alert-info d-flex align-items-center" role="alert">
-				<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-					<use xlink:href="#info-fill" />
-				</svg>
-				<div>
-					Email is now optional. Use your name to login. You can remove your email on the account management page.
-				</div>
-			</div>
-
 			<div class="card text-white bg-dark">
 				<h4 class="card-header">Login</h4>
 				<div class="card-body">
@@ -23,7 +14,7 @@
 						@csrf
 
 						<div class="input-group mb-3">
-							<span class="input-group-text" id="name-label">Name</span>
+							<span class="input-group-text" id="name-label">Username</span>
 							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" aria-label="Name" aria-describedby="name-label" required autocomplete="name" autofocus>
 
 							@error('name')
