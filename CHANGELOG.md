@@ -4,6 +4,9 @@
 
 <!-- TOC depthto:1 -->
 
+- [Load Order Library](#load-order-library)
+- [Table of Contents](#table-of-contents)
+- [v5.4.0](#v540)
 - [v5.3.9](#v539)
 - [v5.3.8](#v538)
 - [v5.3.7](#v537)
@@ -100,6 +103,32 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.4.0
+> 2022-04-12
+
+## Added
+- Added Enderal and Enderal SE as supported games
+- Added a Discord SVG logo for potential future use
+- Added optional places for README/Discord links for lists
+
+## Fixed
+
+## Changed
+- Changed prompt on login and register pages to read `Username` instead of `Name`
+
+## Removed
+- Removed the banner indicating that emails no longer are used for logging in
+
+## Closed
+
+## Internals
+- NPM
+	- Updated `browser-sync` from `2.27.8` -> `2.27.9`
+	- Updated `resolve-url-loader` from `4.0.0` -> `5.0.0`
+	- Updated `sass` from `1.49.9` -> `1.50.0`
+- Composer
+	- Updated packages with `composer update`
 
 # v5.3.9
 > 2022-03-14
