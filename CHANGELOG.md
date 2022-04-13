@@ -4,8 +4,6 @@
 
 <!-- TOC depthto:1 -->
 
-- [Load Order Library](#load-order-library)
-- [Table of Contents](#table-of-contents)
 - [v5.4.0](#v540)
 - [v5.3.9](#v539)
 - [v5.3.8](#v538)
@@ -112,15 +110,11 @@
 - Added a Discord SVG logo for potential future use
 - Added optional places for README/Discord links for lists
 
-## Fixed
-
 ## Changed
 - Changed prompt on login and register pages to read `Username` instead of `Name`
 
 ## Removed
 - Removed the banner indicating that emails no longer are used for logging in
-
-## Closed
 
 ## Internals
 - NPM
