@@ -286,6 +286,8 @@ class LoadOrderController extends Controller
 		$loadOrder->description = $validated['description'];
 		$loadOrder->version 	= $validated['version'];
 		$loadOrder->website     = str_replace(['https://', 'http://'], '', $validated['website']);
+		$loadOrder->discord     = str_replace(['https://', 'http://'], '', $validated['discord']);
+		$loadOrder->readme      = str_replace(['https://', 'http://'], '', $validated['readme']);
 		$loadOrder->is_private  = $request->input('private') != null;
 		$loadOrder->expires_at  = $expires;
 		$loadOrder->save();
