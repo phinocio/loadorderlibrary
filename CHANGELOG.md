@@ -102,6 +102,13 @@
 
 <!-- /TOC -->
 
+# v5.4.1
+> 2022-04-12
+
+## Fixed
+- Fixed edit form not actually updating the new URL options
+- Fixed forgetting about the browse page card view for lists. It now also shows the URLs
+
 # v5.4.0
 > 2022-04-12
 
