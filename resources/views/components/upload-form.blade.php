@@ -33,9 +33,31 @@
 
 	<div class="form-group mb-3">
 		<label for="website">Website (optional)</label>
-		<small id="websiteHelp" class="text-muted">Optional link for the site/README the list is hosted at.</small>
+		<small id="websiteHelp" class="text-muted">Optional link for the site the list is hosted at.</small>
 		<input name="website" type="text" class="form-control @error('website') is-invalid @enderror" id="website" value="{{ old('website') }}">
 		@error('website')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+
+	<div class="form-group mb-3">
+		<label for="discord">Discord (optional)</label>
+		<small id="discordHelp" class="text-muted">Optional link for the Discord Server any commmunity/support is at.</small>
+		<input name="discord" type="text" class="form-control @error('discord') is-invalid @enderror" id="discord" value="{{ old('discord') }}">
+		@error('discord')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+
+	<div class="form-group mb-3">
+		<label for="readme">README (optional)</label>
+		<small id="readmeHelp" class="text-muted">Optional link for the README for the list.</small>
+		<input name="readme" type="text" class="form-control @error('readme') is-invalid @enderror" id="readme" value="{{ old('readme') }}">
+		@error('readme')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
 		</span>

@@ -17,12 +17,22 @@
 						</a>
 					</small>
 					@if($loadOrder->website)
-					<a class="" href="https://{{ $loadOrder->website }}" target="_blank" rel="noopener noreferrer">{{ $loadOrder->website }}
-						<x-icons.external-site />
-					</a>
+						<a class="" href="https://{{ $loadOrder->website }}" target="_blank" rel="noopener noreferrer">List Website
+							<x-icons.external-site />
+						</a>					
+					@endif
+					@if($loadOrder->discord)						
+						<a class="" href="https://{{ $loadOrder->discord }}" target="_blank" rel="noopener noreferrer">Discord Server
+							<x-icons.external-site />
+						</a>					
+					@endif
+					@if($loadOrder->readme)					
+						<a class="" href="https://{{ $loadOrder->readme }}" target="_blank" rel="noopener noreferrer">README
+							<x-icons.external-site />
+						</a>						
 					@endif
 				</div>
-				
+
 				<div class="d-flex flex-column align-items-end">
 					<small>
 						<em><a class="game-link" href="/lists?game={{ $loadOrder->game->name }}">{{ $loadOrder->game->name }}</a></em>
@@ -51,7 +61,7 @@
 								['parts' => '1 | Carbon::ROUND | Carbon::SEQUENTIAL_PARTS_ONLY']
 								
 							)}}
-						</small>
+					</small>
 					@endif
 				</div>
 				<div class="d-flex">

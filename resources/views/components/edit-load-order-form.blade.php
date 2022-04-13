@@ -44,6 +44,28 @@
 	</div>
 
 	<div class="form-group mb-3">
+		<label for="discord">Discord (optional)</label>
+		<small id="discordHelp" class="text-muted">Optional link for the Discord Server any commmunity/support is at.</small>
+		<input name="discord" type="text" class="form-control @error('discord') is-invalid @enderror" id="discord" value="{{ old('discord') ?? $loadOrder->discord }}">
+		@error('discord')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+
+	<div class="form-group mb-3">
+		<label for="readme">README (optional)</label>
+		<small id="readmeHelp" class="text-muted">Optional link for the README for the list.</small>
+		<input name="readme" type="text" class="form-control @error('readme') is-invalid @enderror" id="readme" value="{{ old('readme') ?? $loadOrder->readme }}">
+		@error('readme')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+
+	<div class="form-group mb-3">
 		<label for="game">Game</label>
 		<select name="game" class="form-control @error('game') is-invalid @enderror" id="game">
 			<option value="">-Choose Game-</option>
