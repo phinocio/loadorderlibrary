@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 class TransparencyController extends Controller
 {
-    public function index()
-    {
-		echo 'hi';
-    }
+    public function index() {
+		return view('transparency');
+	}
 }
