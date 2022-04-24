@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/support-me', function () {
 	return view('support-me');
 });
+Route::get('/transparency', 'TransparencyController@index')->name('transparency');
 
 // List View/Upload Routes.
 Route::get('/lists', 'LoadOrderController@index')->name('lists');
@@ -27,7 +28,6 @@ Route::put('/lists/{load_order:slug}', 'LoadOrderController@update')->name('list
 Route::get('/lists/{load_order:slug}', 'LoadOrderController@show');
 Route::get('/lists/{load_order:slug}/download/{file}', 'DownloadController@index');
 Route::delete('/lists/{load_order:slug}', 'LoadOrderController@destroy');
-
 
 // Comparison Routes.
 Route::get('/compare', 'ComparisonController@index')->name('compare');
@@ -46,12 +46,3 @@ Route::get('/admin/backups', 'AdminController@backups')->name('admin.backup');
 Route::get('/admin/backups/download/{id}', 'AdminController@downloadBackup')->name('admin.download-backup');
 Route::delete('/admin/backups/delete/{id}', 'AdminController@deleteBackup')->name('admin.delete-backup');
 Route::get('/admin/server-metrics', 'AdminController@serverStats')->name('admin.server-metrics');
-
-Route::get('/transparency', 'TransparencyController@index')->name('transparency');
-
-// Intentional error routes for testing purposes.
-Route::get('/errors/500', 'IntentionalErrorsController@http500')->name('error.500');
-
-
-
-
