@@ -38,7 +38,7 @@ class StoreUpload extends FormRequest
 			'discord' => 'string|nullable',
 			'readme' => 'string|nullable',
             'files' => 'required',
-            'files.*' => [new ValidMimetype, 'max:128', new ValidNumLines, new ValidFilename],
+            'files.*' => [new ValidMimetype, 'max:512', new ValidNumLines, new ValidFilename],
 			'expires' => 'string|nullable'
         ];
     }
@@ -51,7 +51,7 @@ class StoreUpload extends FormRequest
     public function messages()
     {
 		$messages = [
-			'files.*.max' => 'Files may not be more than 128KB.'
+			'files.*.max' => 'Files may not be more than 512KB.'
 		];
 
         return $messages;

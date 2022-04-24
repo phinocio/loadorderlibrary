@@ -35,7 +35,7 @@ class UpdateLoadOrder extends FormRequest
 			'website' => 'string|nullable',
 			'discord' => 'string|nullable',
 			'readme' => 'string|nullable',
-			'files.*' => [new ValidMimetype, 'max:128', new ValidNumLines, new ValidFilename],
+			'files.*' => [new ValidMimetype, 'max:512', new ValidNumLines, new ValidFilename],
 			'existing' => 'required',
 			'existing.*' => 'string',
 			'expires' => 'string|nullable'
@@ -50,7 +50,7 @@ class UpdateLoadOrder extends FormRequest
 	public function messages()
 	{
 		return [
-			'files.*.max' => 'Files may not be more than 128KB.',
+			'files.*.max' => 'Files may not be more than 512KB.',
 			'files.*.mimes' => 'Files must be of type txt or ini',
 			'existing' => 'At least one file is required for a list'
 		];

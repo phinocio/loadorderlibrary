@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.4.2](#v542)
 - [v5.4.1](#v541)
 - [v5.4.0](#v540)
 - [v5.3.9](#v539)
@@ -102,6 +103,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.4.2
+> 2022-04-24
+
+## Changed
+- Changed the max file size for uploads from 128KB to 512KB
 
 # v5.4.1
 > 2022-04-12
