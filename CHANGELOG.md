@@ -4,6 +4,8 @@
 
 <!-- TOC depthto:1 -->
 
+- [Load Order Library](#load-order-library)
+- [Table of Contents](#table-of-contents)
 - [v5.4.3](#v543)
 - [v5.4.2](#v542)
 - [v5.4.1](#v541)
@@ -107,6 +109,9 @@
 
 # v5.4.3
 > 2022-08-05
+
+## Changed
+- Finally remembered to udpate the copyright year in the footer.
 
 ## Internals
 - NPM
