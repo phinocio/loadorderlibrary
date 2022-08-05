@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.4.3](#v543)
 - [v5.4.2](#v542)
 - [v5.4.1](#v541)
 - [v5.4.0](#v540)
@@ -103,6 +104,18 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.4.3
+> 2022-08-05
+
+## Internals
+- NPM
+	- Updated `laravel-mix` from `6.0.43` -> `6.0.49`
+	- Updated `browser-sync` from `2.27.9` -> `2.27.10`
+	- Updated `sass` from `1.50.0` -> `1.54.3`
+	- Updated `sass-loader` from `12.6.0` -> `13.0.2`
+- Composer
+	- Updated packages with `composer update`
 
 # v5.4.2
 > 2022-04-24
