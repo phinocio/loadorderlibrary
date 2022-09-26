@@ -6,6 +6,7 @@
 
 - [Load Order Library](#load-order-library)
 - [Table of Contents](#table-of-contents)
+- [v5.5.0](#v550)
 - [v5.4.3](#v543)
 - [v5.4.2](#v542)
 - [v5.4.1](#v541)
@@ -106,6 +107,14 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.5.0
+> 2022-04-24
+
+## Added
+## Fixed
+## Changed
+
 
 # v5.4.3
 > 2022-08-05
