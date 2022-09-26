@@ -114,6 +114,9 @@
 ## Added
 ## Fixed
 ## Changed
+## Removed
+## Internals
+## Closed
 
 
 # v5.4.3

@@ -41,7 +41,7 @@ class LoadOrderController extends Controller
 
 		if ($author) {
 			$query->whereUserId($author->id);
-		}	
+		}
 
 		if ($sort == 'updated') {
 			$query->orderBy('updated_at', 'desc');
@@ -79,7 +79,7 @@ class LoadOrderController extends Controller
 		$validated = $request->validated();
 
 		$files = $this->getFileNames($validated['files']);
-		
+
 		$fileIds = [];
 		foreach ($files as $file) {
 			$file['clean_name'] = explode('-', $file['name'])[1];
@@ -109,7 +109,7 @@ class LoadOrderController extends Controller
 					break;
 			}
 		}
-		
+
 		$loadOrder = new LoadOrder();
 		$loadOrder->user_id     = auth()->check() ? auth()->user()->id : null;
 		$loadOrder->game_id     = (int) $validated['game'];
@@ -165,7 +165,7 @@ class LoadOrderController extends Controller
 					if (str_starts_with($line, '-')) {
 						$class = 'list-disabled list-disabled-hidden';
 					}
-					
+
 					if (str_ends_with($line, '_separator')) {
 						$class = 'list-separator';
 
@@ -187,10 +187,10 @@ class LoadOrderController extends Controller
 						"class" => $class
 					];
 				}
-				
+
 			}
 
-			
+
 			array_push($files, ['name' => $fileName, 'content' => $parsedContent]);
 		}
 
@@ -198,7 +198,7 @@ class LoadOrderController extends Controller
 
 		return view('load-order')->with(['loadOrder' => $loadOrder, 'files' => $files, 'author' => $author]);
 	}
-	
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -212,7 +212,7 @@ class LoadOrderController extends Controller
 		{
 			abort(403);
 		}
-		
+
 		$games = Game::orderBy('name', 'asc')->get();
 		return view('edit-load-order')->with(['games' => $games, 'loadOrder' => $loadOrder, 'validFiles' => ValidFiles::all()]);
 	}
@@ -236,7 +236,7 @@ class LoadOrderController extends Controller
 
 		if (isset($validated['files'])) {
 			$files = $this->getFileNames($validated['files']);
-	
+
 			foreach ($files as $file) {
 				$file['clean_name'] = explode('-', $file['name'])[1];
 				$file['size_in_bytes'] = \Storage::disk('uploads')->size($file['name']);
@@ -248,7 +248,7 @@ class LoadOrderController extends Controller
 				$overwrite = preg_grep("/$cleanName/", $validated['existing']);
 				if ($overwrite) {
 					$keyToRemove = array_keys($overwrite);
-					unset($validated['existing'][$keyToRemove[0]]);			
+					unset($validated['existing'][$keyToRemove[0]]);
 				}
 			}
 		}
