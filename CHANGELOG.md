@@ -6,6 +6,7 @@
 
 - [Load Order Library](#load-order-library)
 - [Table of Contents](#table-of-contents)
+- [v5.5.1](#v551)
 - [v5.5.0](#v550)
 - [v5.4.3](#v543)
 - [v5.4.2](#v542)
@@ -108,16 +109,20 @@
 
 <!-- /TOC -->
 
+# v5.5.1
+> 2022-10-19
+
+## Fixed
+- Fixed browse page display breaking, which then breaks filtering for lists by removing the LinkParser from parsing descriptions
+
+## Closed
+- https://github.com/phinocio/loadorderlibrary/issues/74
+
 # v5.5.0
-> 2022-04-24
+> 2022-09-26
 
 ## Added
-## Fixed
-## Changed
-## Removed
-## Internals
-## Closed
-
+- Transparency page
 
 # v5.4.3
 > 2022-08-05
