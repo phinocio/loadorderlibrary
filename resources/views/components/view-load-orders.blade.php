@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="card-body">
-				{!! mb_strimwidth(\App\Helpers\LinkParser::parse($loadOrder->description ?? 'No description provided.'), 0, 300, '...') !!}
+				{{ mb_strimwidth($loadOrder->description ?? 'No description provided.', 0, 300, '...') }}
 
 				@if($loadOrder->website)
 				<br />

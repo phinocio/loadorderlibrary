@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				{!! \App\Helpers\LinkParser::parse($loadOrder->description ?? 'No description provided.') !!}
+				{{ $loadOrder->description ?? 'No description provided.' }}
 			</div>
 
 			<div class="card-footer text-muted d-flex justify-content-between align-items-center">
@@ -59,7 +59,7 @@
 					<small title="{{$loadOrder->expires_at->format('Y-m-d H:i:s T')}}">
 						Expires {{ $loadOrder->expires_at->diffForHumans(
 								['parts' => '1 | Carbon::ROUND | Carbon::SEQUENTIAL_PARTS_ONLY']
-								
+
 							)}}
 					</small>
 					@endif
