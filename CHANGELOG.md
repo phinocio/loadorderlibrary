@@ -112,13 +112,9 @@
 # v5.5.1
 > 2022-10-19
 
-## Added
-
 ## Fixed
-- Fixed browse page display breaking, which then breaks filtering for lists
-## Changed
-## Removed
-## Internals
+- Fixed browse page display breaking, which then breaks filtering for lists by removing the LinkParser from parsing descriptions
+
 ## Closed
 - https://github.com/phinocio/loadorderlibrary/issues/74
 
