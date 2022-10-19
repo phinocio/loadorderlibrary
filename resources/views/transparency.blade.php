@@ -8,7 +8,7 @@
 	<div class="col-md-12">
 		<div style="display:flex; align-items: center; justify-content: space-between">
 			<h1 class="text-white">Transparency</h1>
-			<small class="text-white">Last Updated: 2022-09-26</small>
+			<small class="text-white">Last Updated: 2022-10-19</small>
 		</div>
 
 
