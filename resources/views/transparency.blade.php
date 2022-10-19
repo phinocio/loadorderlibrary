@@ -44,7 +44,7 @@
 		</table>
 
 		<h2 class="text-white">Income</h2>
-		<h5 class="text-white"><b>TLDR:</b> $4.43 CAD lifetime</h5>
+		<h5 class="text-white"><b>TLDR:</b> $44.43 CAD lifetime</h5>
 		<span class="text-white">NOTE: Not in the table is 0.0021051 ETH received on July 26, 2021 as I no longer accept cryptocurrency donations.</span>
 		<table class="table table-striped table-dark">
 			<tr>
@@ -53,7 +53,12 @@
 				<th>Source</th>
 			</tr>
 			<tr>
-				<td>December 2021 - September 2022</td>
+				<td>September 2022</td>
+				<td>$40.00 CAD</td>
+				<td>Ko-fi</td>
+			</tr>
+			<tr>
+				<td>December 2021 - August 2022</td>
 				<td>$0.00 CAD</td>
 				<td>All sources</td>
 			</tr>
@@ -79,7 +84,7 @@
 			</tr>
 			<tr>
 				<th>Total Income</th>
-				<td>$4.43 CAD</td>
+				<td>$44.43 CAD</td>
 				<td></td>
 			</tr>
 		</table>
