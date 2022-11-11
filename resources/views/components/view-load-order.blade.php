@@ -92,7 +92,7 @@
 	<div class="col-md-12">
 		<div class="accordion" id="accordion">
 			@foreach($files as $file)
-			<div class="accordion-item bg-dark mb-1">
+			<div class="accordion-item bg-dark mb-1" id='{{$file['name']}}'>
 				<div class="accordion-header d-flex justify-content-between align-items-center pe-3">
 					<h2 class="m-0 p-0" id="heading{{$loop->index}}">
 						<button class="accordion-button collapsed bg-dark text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$loop->index}}" aria-expanded="false" aria-controls="collapse{{$loop->index}}">
@@ -105,7 +105,7 @@
 						<button class="btn btn-secondary btn-sm text-white" href="#" aria-label="download" role="button">Download File</button>
 					</form>
 				</div>
-				<div id="collapse{{$loop->index}}" class="accordion-collapse collapse" aria-labelledby="heading{{$loop->index}}" data-bs-parent="#accordion">
+				<div id="collapse{{$loop->index}}" class="{{ $file['name'] }} accordion-collapse collapse" aria-labelledby="heading{{$loop->index}}" data-bs-parent="#accordion">
 					<div class="accordion-body text-white p-0">
 						<form class="form">
 							<div class="input-group">
@@ -158,7 +158,7 @@
 	function filter(search, list) {
 
 		// Declare variables
-		var input, filter, ul, li, a, i, txtValue;
+		let input, filter, ul, li, a, i, txtValue;
 		input = document.getElementById(search);
 		filter = input.value.toLowerCase();
 		ul = document.getElementById(list);
@@ -178,4 +178,16 @@
 			}
 		}
 	}
+
+
+	const hash = window.location.hash.replace('#', '');
+	document.getElementsByClassName(hash)[0].classList.add('show');
+
+	window.onhashchange = function() {
+		const hash = window.location.hash.replace('#', '');
+		document.getElementsByClassName(hash)[0].el.classList.add('show');
+	}
+
+
+
 </script>
