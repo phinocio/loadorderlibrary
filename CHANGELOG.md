@@ -4,8 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
-- [Load Order Library](#load-order-library)
-- [Table of Contents](#table-of-contents)
+- [v5.5.2](#v552)
 - [v5.5.1](#v551)
 - [v5.5.0](#v550)
 - [v5.4.3](#v543)
@@ -108,6 +107,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.5.2
+> 2022-11-11
+ 
+## Added
+- Added the ability to link directly to a file with #<filename>
 
 # v5.5.1
 > 2022-10-19

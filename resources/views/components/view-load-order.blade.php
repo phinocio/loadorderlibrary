@@ -185,7 +185,7 @@
 
 	window.onhashchange = function() {
 		const hash = window.location.hash.replace('#', '');
-		document.getElementsByClassName(hash)[0].el.classList.add('show');
+		document.getElementsByClassName(hash)[0].classList.add('show');
 	}
 
 
