@@ -4,6 +4,7 @@
 
 <!-- TOC depthto:1 -->
 
+- [v5.5.3](#v553)
 - [v5.5.2](#v552)
 - [v5.5.1](#v551)
 - [v5.5.0](#v550)
@@ -107,6 +108,17 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.5.3
+> 2022-12-28
+
+## Internals
+- NPM
+	- Updated `browser-sync` from `2.27.10` -> `2.27.11`
+	- Updated `sass` from `1.55.0` -> `1.57.1`
+	- Updated `sass-loader` from `13.0.2` -> `13.2.0`
+- Composer
+	- Updated packages with `composer update`
 
 # v5.5.2
 > 2022-11-11
