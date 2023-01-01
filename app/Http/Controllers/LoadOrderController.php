@@ -356,8 +356,8 @@ class LoadOrderController extends Controller
 
 		array_push($files, ['name' => $fileName, 'content' => $parsedContent]);
 
-
-		return view('embeds.files')->with(['loadOrder' => $loadOrder, 'file' => $files[0]]);
+		return response(view('embeds.files')->with(['loadOrder' => $loadOrder, 'file' => $files[0]]), 200)
+				->header('X-Frame-Options', '');
 	}
 
 	/**
