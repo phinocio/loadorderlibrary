@@ -121,7 +121,7 @@
 											src="{{config('app.url')}}/lists/{{$loadOrder->slug}}/embed/{{$file['name']}}"
 											width="875"
 											height="1000"
-											sandbox
+											sandbox="allow-scripts"
 											&gt;&lt;/iframe&gt;
 										</code>
 									</div>
