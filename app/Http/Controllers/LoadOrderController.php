@@ -19,7 +19,6 @@ class LoadOrderController extends Controller
 	public function __construct()
 	{
 		$this->middleware("auth", ['except' => ['index', 'show', 'create', 'store', 'embed']]);
-		$this->middleware('allow-embed')->only('embed');
 	}
 
 	/**
