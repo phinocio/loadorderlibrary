@@ -100,10 +100,37 @@
 						</button>
 
 					</h2>
-					<form class="form-inline" action="/lists/{{$loadOrder->slug}}/download/{{ $file['name'] }}">
-						@csrf
-						<button class="btn btn-secondary btn-sm text-white" href="#" aria-label="download" role="button">Download File</button>
-					</form>
+					<div class="d-flex justify-content-between">
+						<form class="form-inline" action="/lists/{{$loadOrder->slug}}/download/{{ $file['name'] }}">
+							@csrf
+							<button class="btn btn-secondary btn-sm text-white" href="#" aria-label="download" role="button">Download File</button>
+						</form>
+
+						<button class="btn btn-link btn-sm text-white ms-2 p-0" href="#" aria-label="download" role="button" title='Embed file' data-bs-toggle="modal" data-bs-target="#embedModal{{$loop->index}}"><x-icons.embed /></button>
+						<!-- absolutely horrible way of doing this, but refactor coming soon (TM) so /shrug -->
+						<div class="modal fade" id="embedModal{{$loop->index}}" tabindex="-1" aria-labelledby="embedModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered modal-dark">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="embedModalLabel">Embed {{ $file['name'] }}</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<code>
+											&lt;iframe
+											src="{{config('app.url')}}/lists/{{$loadOrder->slug}}/embed/{{$file['name']}}"
+											width="875"
+											height="1000"
+											&gt;&lt;/iframe&gt;
+										</code>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div id="collapse{{$loop->index}}" class="{{ $file['name'] }} accordion-collapse collapse" aria-labelledby="heading{{$loop->index}}" data-bs-parent="#accordion">
 					<div class="accordion-body text-white p-0">
@@ -143,7 +170,6 @@
 			@endforeach
 		</div>
 	</div>
-
 </div>
 
 <script>
@@ -179,9 +205,10 @@
 		}
 	}
 
-
 	const hash = window.location.hash.replace('#', '');
-	document.getElementsByClassName(hash)[0].classList.add('show');
+	if(hash) {
+		document.getElementsByClassName(hash)[0].classList.add('show');
+	}
 
 	window.onhashchange = function() {
 		const hash = window.location.hash.replace('#', '');

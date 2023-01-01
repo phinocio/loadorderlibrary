@@ -127,7 +127,7 @@
 			<div class="container d-flex flex-column align-items-center text-center">
 				<div class="text-white">
 					<p>
-						Load Order Library &copy; 2022 Phinocio
+						Load Order Library - Created by Phinocio
 					</p>
 
 				</div>

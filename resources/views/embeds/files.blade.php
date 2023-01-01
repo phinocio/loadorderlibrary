@@ -65,7 +65,7 @@
 							<form class="form">
 								<div class="input-group">
 									<span class="input-group-text" id="filterlabel">Filter</span>
-									<input class="form-control" type="search" placeholder="Filter..." aria-labelledby="filterlabel" onkeyup="filter('filter', 'list')" id="filter">
+									<input class="form-control" type="search" placeholder="Filter..." aria-labelledby="filterlabel" onkeyup="filter('filter1', 'list')" id="filter1">
 								</div>
 
 								@if($file['name'] == 'modlist.txt')
