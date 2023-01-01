@@ -19,6 +19,7 @@ class LoadOrderController extends Controller
 	public function __construct()
 	{
 		$this->middleware("auth", ['except' => ['index', 'show', 'create', 'store', 'embed']]);
+		$this->middleware('allow-embed')->only('embed');
 	}
 
 	/**
@@ -357,7 +358,9 @@ class LoadOrderController extends Controller
 		array_push($files, ['name' => $fileName, 'content' => $parsedContent]);
 
 		return response(view('embeds.files')->with(['loadOrder' => $loadOrder, 'file' => $files[0]]), 200)
-				->header('Content-Security-Policy', 'frame-ancestors *');
+				->header('Content-Security-Policy', 'frame-ancestors *')
+				->header('Content-Security-Policy', 'script-src \'sha256-MDY5YTZlNTg3Zjc1MWY4ZDE1MTdlZjhhNzU0OWU0NWY0YTRiMWU5OTgwMTRhNGJiYjQyZmE5NjQ5
+ZjBiY2JmYQo=\'');
 	}
 
 	/**
