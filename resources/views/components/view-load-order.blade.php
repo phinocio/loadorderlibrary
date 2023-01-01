@@ -116,6 +116,9 @@
 										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
+										<p>
+											Feel free to remove the `allow-scripts` from the sandbox attribute. It's there to allow filtering and toggling of disabled mods for modlist.txt, but adds some insecurity.
+										</p>
 										<code>
 											&lt;iframe
 											src="{{config('app.url')}}/lists/{{$loadOrder->slug}}/embed/{{$file['name']}}"
