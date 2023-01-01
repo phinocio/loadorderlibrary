@@ -55,10 +55,6 @@
 							</button>
 
 						</h2>
-						<form class="form-inline" action="/lists/{{$loadOrder->slug}}/download/{{ $file['name'] }}">
-							@csrf
-							<button class="btn btn-secondary btn-sm text-white" href="#" aria-label="download" role="button">Download File</button>
-						</form>
 					</div>
 					<div id="collapse" class="{{ $file['name'] }} accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#accordion">
 						<div class="accordion-body text-white p-0">
