@@ -28,6 +28,7 @@ Route::put('/lists/{load_order:slug}', 'LoadOrderController@update')->name('list
 Route::get('/lists/{load_order:slug}', 'LoadOrderController@show');
 Route::get('/lists/{load_order:slug}/download/{file}', 'DownloadController@index');
 Route::delete('/lists/{load_order:slug}', 'LoadOrderController@destroy');
+Route::get('/lists/{load_order:slug}/embed/{file}', 'LoadOrderController@embed');
 
 // Comparison Routes.
 Route::get('/compare', 'ComparisonController@index')->name('compare');

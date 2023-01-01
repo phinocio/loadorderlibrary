@@ -3,7 +3,7 @@
 # Table of Contents
 
 <!-- TOC depthto:1 -->
-
+- [v5.6.0](#v560)
 - [v5.5.3](#v553)
 - [v5.5.2](#v552)
 - [v5.5.1](#v551)
@@ -108,6 +108,15 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.6.0
+> 2023-01-01
+
+## Added
+- Each file can now be embeded in another site by appending `/embed/<modlistname>` to the url for a list. The name includes the file extension
+
+## Fixed
+- Fixed the counter on list files not being a static width (changed to `flex:` instead of `min-width:`)
 
 # v5.5.3
 > 2022-12-28
