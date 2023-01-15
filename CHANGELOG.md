@@ -3,6 +3,7 @@
 # Table of Contents
 
 <!-- TOC depthto:1 -->
+- [v5.6.1](#v561)
 - [v5.6.0](#v560)
 - [v5.5.3](#v553)
 - [v5.5.2](#v552)
@@ -108,6 +109,12 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.6.1
+> 2023-01-14
+
+## Added
+- Separators in modlist.txt are now able to be collapsed
 
 # v5.6.0
 > 2023-01-01
