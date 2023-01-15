@@ -154,19 +154,56 @@
 							@endif
 						</form>
 						<ul class="list-group bg-dark {{ $file['name'] }}" id="list{{$loop->index}}">
-							@foreach($file['content'] as $row)
-							<li class="bg-dark text-white list-group-item list-group-item-dark d-flex align-items-center p-0 m-0 {{ $row['class'] }}">
-								<div class="counter">
-									<span>
-										{{ $loop->index + 1 }}
-									</span>
-								</div>
-								<div class="line">
+							@if($file['name'] != 'modlist.txt')
+								@foreach($file['content'] as $row)
+								<li class="bg-dark text-white list-group-item list-group-item-dark d-flex align-items-center p-0 m-0 {{ $row['class'] }}">
+									<div class="counter">
+										<span>
+											{{ $loop->index + 1 }}
+										</span>
+									</div>
+									<div class="line">
 
-									{{ $row['line'] }}
-								</div>
-							</li>
-							@endforeach
+										{{ $row['line'] }}
+									</div>
+								</li>
+								@endforeach
+							@else
+								@foreach($file['content'][0] as $row)
+									@if($row['name'] == 'default')
+										@foreach($row['content'] as $line)
+											<li class="bg-dark text-white list-group-item list-group-item-dark d-flex align-items-center p-0 m-0">
+												<div class="counter">
+														<span>
+															{{ $loop->index + 1 }}
+														</span>
+												</div>
+												<div class="line">
+													{{ $line['line'] }}
+												</div>
+											</li>
+										@endforeach
+									@else
+										<details open>
+											<summary class="bg-dark text-white list-group-item list-group-item-dark d-flex align-items-center p-0 m-0 list-separator">
+												{{ $row['name'] }}
+											</summary>
+											@foreach($row['content'] as $line)
+												<li class="bg-dark text-white list-group-item list-group-item-dark d-flex align-items-center p-0 m-0 {{$line['class']}}">
+													<div class="counter">
+														<span>
+															{{ $line['index'] }}
+														</span>
+													</div>
+													<div class="line">
+														{{ $line['line'] }}
+													</div>
+												</li>
+											@endforeach
+										</details>
+									@endif
+								@endforeach
+							@endif
 						</ul>
 					</div>
 				</div>

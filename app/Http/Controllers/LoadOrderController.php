@@ -159,25 +159,13 @@ class LoadOrderController extends Controller
 				$content = array_reverse($content);
 			}
 
+			if ($fileName == 'modlist.txt') {
+				$parsedContent[] = $this->generateModlistTxt($content);
+			}
+
 			foreach ($content as $line) {
 				$class = null;
-				if ($fileName == 'modlist.txt') {
-					if (str_starts_with($line, '-')) {
-						$class = 'list-disabled list-disabled-hidden';
-					}
-
-					if (str_ends_with($line, '_separator')) {
-						$class = 'list-separator';
-
-						$line = str_replace('_separator', '', $line);
-					}
-
-					$parsedContent[] = [
-						"line" => substr($line, 1),
-						"class" => $class
-					];
-
-				} else {
+				if ($fileName != 'modlist.txt') {
 					// First, check if the file is plugins.txt
 					if ($fileName == "plugins.txt") {
 						$line = str_replace("*", '', $line);
@@ -190,12 +178,12 @@ class LoadOrderController extends Controller
 
 			}
 
-
-			array_push($files, ['name' => $fileName, 'content' => $parsedContent]);
+			$files[] = ['name' => $fileName, 'content' => $parsedContent];
 		}
 
 		$author = $loadOrder->author ? $loadOrder->author->name : 'Anonymous';
 
+//		dd($files);
 		return view('load-order')->with(['loadOrder' => $loadOrder, 'files' => $files, 'author' => $author]);
 	}
 
@@ -415,5 +403,32 @@ class LoadOrderController extends Controller
 	private function checkFileExists(string $fileName): bool
 	{
 		return in_array('uploads/' . $fileName, \Storage::files('uploads'));
+	}
+
+	private function generateModlistTxt(array $modlist): array {
+		$separators = [['name' => 'default', 'class' => 'default', 'content' => [], 'original_name' => 'default']];
+		foreach ($modlist as $line) {
+			if (str_ends_with($line, '_separator')) {
+				$name = substr(str_replace('_separator', '', $line), 1);
+				$separators[] = ['name' => $name, 'class' => 'list-separator', 'content' => [], 'original_name' => $line];
+			}
+		}
+		$separatorIndex = 0;
+		$modIndex = 1;
+		foreach ($modlist as $line) {
+			if ($line == $separators[$separatorIndex + 1]['original_name']) {
+				if($separatorIndex < (count($separators) - 2)) {
+					$separatorIndex++;
+				}
+			} else {
+				$class = '';
+				if (str_starts_with($line, '-')) {
+					$class = 'list-disabled list-disabled-hidden';
+				}
+				$separators[$separatorIndex]['content'][] = ['line' => substr($line, 1), 'class' => $class, 'index' => $modIndex];
+			}
+			$modIndex++;
+		}
+		return $separators;
 	}
 }
