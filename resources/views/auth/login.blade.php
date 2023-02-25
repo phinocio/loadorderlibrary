@@ -15,7 +15,7 @@
 
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="name-label">Username</span>
-							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" aria-label="Name" aria-describedby="name-label" required autocomplete="name" autofocus>
+							<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" aria-label="Name" aria-describedby="name-label" required autocomplete="username" autofocus>
 
 							@error('name')
 							<span class="invalid-feedback" role="alert">
