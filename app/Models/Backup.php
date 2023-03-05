@@ -9,5 +9,7 @@ class Backup extends Model
 {
     use HasFactory;
 
-	protected $dates = ['expires_at'];
+	protected $casts = [
+		'expires_at' => 'datetime',
+	];
 }

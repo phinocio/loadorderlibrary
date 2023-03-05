@@ -43,7 +43,7 @@ class CreateBackup extends Command
     {
 		exec('php artisan down');
 		$this->info('Site going into maintenance mode...');
-		
+
 		// Wait 3s to ensure anything in progress was compelted
 		sleep(3);
 
@@ -53,7 +53,7 @@ class CreateBackup extends Command
 		$host = config('database.connections.mysql.host');
 		$db = config('database.connections.mysql.database');
 		$dumpName = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
-		$command = "mysqldump --no-tablespaces --user=" . $user . " --password=" . $pass . " --host=" . $host . " " . $db . " > " . storage_path('app/tmp/') . $dumpName;
+		$command = "mysqldump --column-statistics=0 --no-tablespaces --user=" . $user . " --password=" . $pass . " --host=" . $host . " " . $db . " > " . storage_path('app/tmp/') . $dumpName;
 		$returnVar = NULL;
 		$output  = NULL;
 		exec($command, $output, $returnVar);
