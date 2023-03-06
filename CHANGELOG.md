@@ -3,6 +3,8 @@
 # Table of Contents
 
 <!-- TOC depthto:1 -->
+
+- [v5.7.0](#v570)
 - [v5.6.1](#v561)
 - [v5.6.0](#v560)
 - [v5.5.3](#v553)
@@ -109,6 +111,15 @@
 - [Subheading definitions](#subheading-definitions)
 
 <!-- /TOC -->
+
+# v5.7.0
+> 2023-03-05
+
+## Added
+- Added a `/health` url for uptime status using Uptime-Kuma
+
+## Internals
+- Updated to Laravel 10
 
 # v5.6.1
 > 2023-01-14
