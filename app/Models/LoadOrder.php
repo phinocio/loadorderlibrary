@@ -14,7 +14,9 @@ class LoadOrder extends Model
 
 	protected $with = ['files'];
 
-	protected $dates = ['expires_at'];
+	protected $casts = [
+		'expires_at' => 'datetime'
+	];
 
 	public function game()
 	{
