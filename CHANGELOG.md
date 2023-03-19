@@ -112,6 +112,15 @@
 
 <!-- /TOC -->
 
+# v5.7.1
+> 2023-03-19
+
+## Added
+- More transparency data from income sources
+
+## Fixed
+- Carbon showing incorrect date on some pages
+
 # v5.7.0
 > 2023-03-05
 
