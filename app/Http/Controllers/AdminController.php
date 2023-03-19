@@ -22,14 +22,14 @@ class AdminController extends Controller
 		$userStats = [];
 		$listStats = [];
 		$fileStats = [];
-		
+
 		$users = User::orderBy('created_at', 'desc')->get();
 		$lists = LoadOrder::all();
 		$files = File::with('lists')->get();
 		$filesInLists = File::has('lists')->get();
 		$orphanedFiles = File::doesntHave('lists')->get();
 		$tmpFiles = \Storage::disk('tmp')->allFiles();
-		
+
 		$fileSize = 0;
 
 		foreach ($files as $file) {
@@ -63,7 +63,7 @@ class AdminController extends Controller
 
 		$userStats[] = [
 			"name" => "Last Registered",
-			"value" => \Carbon\Carbon::createFromTimestamp($users[0]->created_at)->diffForHumans()
+			"value" => \Carbon\Carbon::createFromDate($users[0]->created_at)->diffForHumans()
 		];
 
 		$userStats[] = [
@@ -139,12 +139,12 @@ class AdminController extends Controller
 	}
 
 	public function backups()
-	{	
+	{
 		$backups = Backup::orderBy('created_at', 'desc')->get();
 		return view('admin.backups')->with(['backups' => $backups]);
 	}
 
-	public function downloadBackup($id) 
+	public function downloadBackup($id)
 	{
 		$backup = Backup::find($id);
 

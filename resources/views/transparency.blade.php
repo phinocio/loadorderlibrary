@@ -53,6 +53,41 @@
 				<th>Source</th>
 			</tr>
 			<tr>
+				<td>February 2023</td>
+				<td>$7.07 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
+				<td>January 2023</td>
+				<td>$7.14 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
+				<td>January 2022</td>
+				<td>$20 CAD</td>
+				<td>Ko-fi</td>
+			</tr>
+			<tr>
+				<td>December 2022</td>
+				<td>$7.08 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
+				<td>November 2022</td>
+				<td>$7.15 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
+				<td>November 2022</td>
+				<td>$2.00 CAD</td>
+				<td>Ko-fi</td>
+			</tr>
+			<tr>
+				<td>October 2022</td>
+				<td>$7.14 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
 				<td>September 2022</td>
 				<td>$40.00 CAD</td>
 				<td>Ko-fi</td>
@@ -84,7 +119,7 @@
 			</tr>
 			<tr>
 				<th>Total Income</th>
-				<td>$44.43 CAD</td>
+				<td>$102.01 CAD</td>
 				<td></td>
 			</tr>
 		</table>

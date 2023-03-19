@@ -52,7 +52,7 @@ class TransparencyController extends Controller
 
 		$userStats[] = [
 			"name" => "Last Registered",
-			"value" => \Carbon\Carbon::createFromTimestamp($users[0]->created_at)->diffForHumans()
+			"value" => \Carbon\Carbon::createFromDate($users[0]->created_at)->diffForHumans()
 		];
 
 		$userStats[] = [
