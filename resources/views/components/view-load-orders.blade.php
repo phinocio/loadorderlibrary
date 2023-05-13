@@ -80,17 +80,40 @@
 					<a class="ml-2 btn btn-secondary btn-sm text-white" href="/lists/{{$loadOrder->slug}}/edit" role="button">Edit List</a>
 					@endif
 					@if($loadOrder->author == auth()->user() || auth()->user()->is_admin)
-					<form class="form-inline ms-2" method="POST" action="/lists/{{$loadOrder->slug}}">
-						@method('delete')
-						@csrf
-						<button class="ml-2 btn btn-danger btn-sm" href="#" role="button">Delete List</button>
-					</form>
+						<button type="button" class="btn btn-danger btn-sm inline ms-2" data-bs-toggle="modal" data-bs-target="#deleteList{{$loadOrder->id}}">
+							Delete List
+						</button>
+						<!-- Delete list confirmation modal -->
+
+						<div class="modal fade" id="deleteList{{$loadOrder->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteListLabel{{$loadOrder->id}}" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content bg-dark text-white">
+									<div class="modal-header">
+										<h5 class="modal-title text-danger">Delete List <b>{{$loadOrder->name}}</b></h5>
+										<button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Deleting a list is a permanent action. It cannot be undone and is fully deleted from the database. Make sure this is what you want before proceeding.
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										<form class="form-inline ms-2" method="POST" action="/lists/{{$loadOrder->slug}}">
+											@method('delete')
+											@csrf
+											<button class="ml-2 btn btn-danger btn-sm" href="#" role="button">Delete List</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
 					@endif
 					@endif
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 	@empty
 	<div class="col-md-12">
 		<div class="card text-white bg-dark">
@@ -106,13 +129,13 @@
 </div>
 
 <script>
-	function filter(search, list) {
+	function filter(search) {
 
 		// Declare variables
-		var input, filter, ul, li, a, i, headerText, bodyText;
+		let input, filter, a, i, headerText, bodyText;
 		input = document.getElementById(search);
 		filter = input.value.toLowerCase();
-		lists = document.getElementsByClassName('card-group');
+		const lists = document.getElementsByClassName('card-group');
 
 		// Loop through all list items, and hide those who don't match the search query
 

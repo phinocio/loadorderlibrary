@@ -70,11 +70,32 @@
 					<a class="ml-2 btn btn-secondary btn-sm text-white" href="/lists/{{$loadOrder->slug}}/edit" role="button">Edit List</a>
 					@endif
 					@if($loadOrder->author == auth()->user() || auth()->user()->is_admin)
-					<form class="form-inline mx-2" method="POST" action="/lists/{{$loadOrder->slug}}">
-						@method('delete')
-						@csrf
-						<button class="ml-2 btn btn-danger btn-sm" href="#" role="button">Delete List</button>
-					</form>
+						<button type="button" class="btn btn-danger btn-sm inline ms-2" data-bs-toggle="modal" data-bs-target="#deleteList">
+							Delete List
+						</button>
+						<!-- Delete list confirmation modal -->
+
+						<div class="modal fade" id="deleteList" tabindex="-1" role="dialog" aria-labelledby="deleteListLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content bg-dark text-white">
+									<div class="modal-header">
+										<h5 class="modal-title text-danger">Delete List <b>{{$loadOrder->name}}</b></h5>
+										<button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Deleting a list is a permanent action. It cannot be undone and is fully deleted from the database. Make sure this is what you want before proceeding.
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										<form class="form-inline ms-2" method="POST" action="/lists/{{$loadOrder->slug}}">
+											@method('delete')
+											@csrf
+											<button class="ml-2 btn btn-danger btn-sm" href="#" role="button">Delete List</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
 					@endif
 					@endif
 					<form class="form-inline" action="/lists/{{$loadOrder->slug}}/download/all">

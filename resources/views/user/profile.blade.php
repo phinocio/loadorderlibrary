@@ -150,7 +150,7 @@
 				Deleting your account will delete it and any lists associated with it from the database. Please ensure this is what you intend to do as it can not be undone.
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				<form method="POST" action="{{ route('user.delete-account') }}">
 					@csrf
 					<button class="btn btn-danger justify-self-center" type="submit">Delete Account</button>
