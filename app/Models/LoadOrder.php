@@ -12,7 +12,7 @@ class LoadOrder extends Model
 {
 	use HasFactory;
 
-	protected $with = ['files'];
+//	protected $with = ['files'];
 
 	protected $casts = [
 		'expires_at' => 'datetime'

@@ -31,7 +31,7 @@ class LoadOrderController extends Controller
 	{
 		$game = Game::whereName($request->query('game'))->first();
 		$author = User::whereName($request->query('author'))->first();
-		$query = LoadOrder::whereIsPrivate(false);
+		$query = LoadOrder::whereIsPrivate(false)->with(['game', 'author']);
 		$sort = $request->query('sort') ?? null;
 
 
