@@ -21,7 +21,7 @@ RUN npm run prod
 # Production App
 FROM php:8.2-fpm-alpine3.18 as prod
 
-ARG user=lolapi
+ARG user=loltesting
 ARG uid=2000
 RUN adduser -u $uid -D $user
 
@@ -80,7 +80,7 @@ RUN npm run dev
 # Development app
 FROM php:8.2-fpm-alpine3.18 as dev
 
-ARG user=lolapi
+ARG user=loltesting
 # Most users are 1000 UID, use ARG if it's different...
 ARG uid=1000
 RUN adduser -u $uid -D $user
