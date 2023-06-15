@@ -9,6 +9,20 @@ COPY . .
 RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
 
 ##########################################################
+# Testing build frontend
+FROM node:20-alpine3.18 as build-testing-node
+
+WORKDIR /app
+
+RUN mkdir -p public/
+
+COPY package*.json webpack.mix.js /app/
+RUN npm ci
+
+COPY . .
+RUN npm run prod
+
+##########################################################
 # Testing App
 FROM php:8.2-fpm-alpine3.18 as app-testing
 
@@ -38,6 +52,7 @@ RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 # Copy project to container
 COPY . .
+COPY --from=build-testing-node /app/public /var/www/public
 COPY --from=build-testing-composer /app/vendor ./vendor
 COPY --from=build-testing-composer /app/bootstrap ./bootstrap
 

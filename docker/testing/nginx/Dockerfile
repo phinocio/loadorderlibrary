@@ -1,4 +1,4 @@
-# Development build NPM
+# Development build frontend
 FROM node:20-alpine3.18 as build-testing-node
 
 WORKDIR /app
@@ -11,6 +11,7 @@ RUN npm ci
 COPY . .
 RUN npm run prod
 
+##########################################################
 # Testing nginx
 FROM nginx:1.25.1-alpine as nginx-testing
 

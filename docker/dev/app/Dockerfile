@@ -9,6 +9,20 @@ COPY . .
 RUN composer install
 
 ##########################################################
+# Dev build frontend
+FROM node:20-alpine3.18 as build-testing-node
+
+WORKDIR /app
+
+RUN mkdir -p public/
+
+COPY package*.json webpack.mix.js /app/
+RUN npm ci
+
+COPY . .
+RUN npm run prod
+
+##########################################################
 # Development app
 FROM php:8.2-fpm-alpine3.18 as app-dev
 
