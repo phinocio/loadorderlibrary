@@ -2,10 +2,11 @@
 */
 !composer.*
 !app/
-!bootstrap/
+!bootstrap/app.php
 !config/
 !public/
 !routes/
+!storage/
 !artisan
 !docker/
 !database/

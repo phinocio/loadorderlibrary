@@ -1,9 +1,10 @@
-# Testing docker-compose File
-version: '3.7'
+---
+# Docker compose file for testing environment
+
 services:
     db:
         image: mariadb:10.9
-        container_name: lol-db
+        container_name: lol-testing-db
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
@@ -13,36 +14,41 @@ services:
             SERVICE_NAME: mariadb
         profiles: ['testing', 'local']
         volumes:
-            - mariadb_data-lol:/var/lib/mysql
+            - lol-testing-db:/var/lib/mysql
         networks:
             - lol
     app:
-        image: ghcr.io/phinocio/loadorderlibrary:testing
-        container_name: lol-testing
+        build:
+            context: .
+            dockerfile: docker/testing/app/Dockerfile
+            target: app-testing
+        image: loadorderlibrary:testing
+        container_name: lol-testing-app
         restart: unless-stopped
         entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan migrate:fresh --seed && exec php-fpm"
         env_file: .env
-        user: '2000:2000'
+        user: '2100:2100'
         profiles: ['testing', 'local']
         ports:
-            - '127.0.0.1:9000:9000'
+            - '127.0.0.1:9001:9000'
         volumes:
-            - ./storage/:/var/www/storage/
+            - ./storage/:/var/www/storage
         networks:
             - lol
         depends_on: [db]
     nginx:
-        image: nginx:1.25.0-alpine
-        container_name: lol-nginx
+        build:
+            context: .
+            dockerfile: docker/testing/nginx/Dockerfile
+            target: nginx-testing
+        image: loadorderlibrary-nginx:testing
+        container_name: lol-testing-nginx
         restart: unless-stopped
         profiles: ['local']
         ports:
             - '8001:80'
         volumes:
-            - ./public:/var/www/public
-            - ./docker/testing/nginx/nginx.conf:/etc/nginx/nginx.conf
-            - ./docker/testing/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-            - /var/log/nginx/lol-testing:/var/log/nginx
+            - /var/log/nginx/:/var/log/nginx
         networks:
             - lol
         depends_on: [app]
@@ -52,4 +58,4 @@ networks:
         driver: bridge
 
 volumes:
-    mariadb_data-lol:
+    lol-testing-db:

@@ -1,17 +1,15 @@
 name: Create Testing Container
 
-env:
-    TAG: loadorderlibrary
-
 on:
     push:
         branches: [testing]
 
 jobs:
-    build:
+    build-app:
         name: Build Testing Container
         runs-on: ubuntu-latest
         env:
+            TAG: loadorderlibrary
             USER: ${{ github.repository_owner }}
             REGISTRY: ghcr.io
             VERSION: testing
@@ -19,7 +17,27 @@ jobs:
             - uses: actions/checkout@main
 
             - name: Build Container Image
-              run: docker build --target prod -t $TAG .
+              run: docker build --target app-testing -t $TAG docker/testing/app/Dockerfile
+
+            - name: Push to GHCR
+              run: |
+                  echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+                  docker tag $TAG ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
+                  docker push ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
+
+    build-nginx:
+        name: Build nginx Container
+        runs-on: ubuntu-latest
+        env:
+            TAG: loadorderlibrary-nginx
+            USER: ${{ github.repository_owner }}
+            REGISTRY: ghcr.io
+            VERSION: testing
+        steps:
+            - uses: actions/checkout@main
+
+            - name: Build Container Image
+              run: docker build --target nginx-testing -t $TAG docker/testing/nginx/Dockerfile
 
             - name: Push to GHCR
               run: |
