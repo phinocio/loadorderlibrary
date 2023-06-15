@@ -8,15 +8,14 @@ RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interacti
 # Development build NPM
 FROM node:20-alpine3.18 as build-prod-node
 
-RUN mkdir -p /app/public
 WORKDIR /app
+
+RUN mkdir -p public/
 
 COPY package*.json webpack.mix.js /app/
 RUN npm ci
 
-COPY ./public/ /public
-COPY ./resources/js/ /app/resources/js
-COPY ./resources/sass/ /app/resources/sass
+COPY . .
 RUN npm run prod
 
 # Production App
@@ -75,9 +74,7 @@ WORKDIR /app
 COPY package*.json webpack.mix.js /app/
 RUN npm ci
 
-COPY ./public/ /public
-COPY ./resources/js/ /app/resources/js
-COPY ./resources/sass/ /app/resources/sass
+COPY . .
 RUN npm run dev
 
 # Development app

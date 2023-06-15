@@ -13,12 +13,12 @@ require('laravel-mix-purgecss');
  */
 
 // Sass
-mix.sass('resources/sass/app.scss', 'public/css').purgeCss().sourceMaps();
+mix.sass('resources/sass/app.scss', 'public/css').purgeCss().version();
 
 // JS
-mix.js('resources/js/app.js', 'public/js').extract().sourceMaps();
+mix.js('resources/js/app.js', 'public/js').extract().version();
 
-mix.version();
+// mix.version();
 
 if(!mix.inProduction()) {
 	// Browsersync
