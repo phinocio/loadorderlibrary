@@ -47,7 +47,7 @@ RUN docker-php-ext-configure opcache --enable-opcache && \
 	docker-php-ext-install pdo_mysql zip
 
 # Set move OPCache config
-COPY docker/dev/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY docker/dev/app/conf.d/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
