@@ -22,7 +22,7 @@ RUN npm run prod
 FROM php:8.2-fpm-alpine3.18 as prod
 
 ARG user=loltesting
-ARG uid=2000
+ARG uid=2100
 RUN adduser -u $uid -D $user
 
 WORKDIR /var/www
