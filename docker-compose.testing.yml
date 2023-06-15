@@ -18,11 +18,7 @@ services:
         networks:
             - lol
     app:
-        build:
-            context: .
-            dockerfile: docker/testing/app/Dockerfile
-            target: app-testing
-        image: loadorderlibrary:testing
+        image: ghcr.io/phinocio/loadorderlibrary:testing
         container_name: lol-testing-app
         restart: unless-stopped
         entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan migrate:fresh --seed && exec php-fpm"
@@ -37,11 +33,7 @@ services:
             - lol
         depends_on: [db]
     nginx:
-        build:
-            context: .
-            dockerfile: docker/testing/nginx/Dockerfile
-            target: nginx-testing
-        image: loadorderlibrary-nginx:testing
+        image: ghcr.io/phinocio/loadorderlibrary-nginx:testing
         container_name: lol-testing-nginx
         restart: unless-stopped
         profiles: ['local']

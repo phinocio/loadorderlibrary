@@ -17,7 +17,7 @@ jobs:
             - uses: actions/checkout@main
 
             - name: Build Container Image
-              run: docker build --target app-testing -t $TAG docker/testing/app/Dockerfile
+              run: docker build --target app-testing -t $TAG -f docker/testing/app/Dockerfile .
 
             - name: Push to GHCR
               run: |
@@ -37,7 +37,7 @@ jobs:
             - uses: actions/checkout@main
 
             - name: Build Container Image
-              run: docker build --target nginx-testing -t $TAG docker/testing/nginx/Dockerfile
+              run: docker build --target nginx-testing -t $TAG -f docker/testing/nginx/Dockerfile .
 
             - name: Push to GHCR
               run: |
