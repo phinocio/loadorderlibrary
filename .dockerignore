@@ -1,0 +1,15 @@
+*
+*/
+!composer.*
+!app/
+!bootstrap/
+!config/
+!public/
+!routes/
+!storage/
+!artisan
+!docker/
+!database/
+!resources/
+!webpack.mix.js
+!package*.json
