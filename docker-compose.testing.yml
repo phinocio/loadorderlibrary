@@ -21,7 +21,7 @@ services:
         image: ghcr.io/phinocio/loadorderlibrary:testing
         container_name: lol-testing-app
         restart: unless-stopped
-        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan migrate:fresh --seed && exec php-fpm"
+        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate:fresh --seed && exec php-fpm"
         env_file: .env
         user: '2100:2100'
         profiles: ['testing', 'local']
