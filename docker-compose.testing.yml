@@ -34,7 +34,7 @@ services:
         image: ghcr.io/phinocio/loadorderlibrary-nginx:testing
         container_name: lol-testing-nginx
         restart: unless-stopped
-        profiles: ['local']
+        profiles: ['testing', 'local']
         ports:
             - '8001:80'
         volumes:
