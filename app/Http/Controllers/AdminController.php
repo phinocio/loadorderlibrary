@@ -19,6 +19,7 @@ class AdminController extends Controller
 
     public function stats()
 	{
+		phpinfo();
 		$userStats = [];
 		$listStats = [];
 		$fileStats = [];
