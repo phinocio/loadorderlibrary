@@ -16,7 +16,7 @@ services:
         volumes:
             - lol-testing-db:/var/lib/mysql
         networks:
-            - lol
+            - lol-db
     app:
         image: ghcr.io/phinocio/loadorderlibrary:testing
         container_name: lol-testing-app
@@ -29,6 +29,7 @@ services:
             - ./storage/:/var/www/storage
         networks:
             - lol
+            - lol-db
         depends_on: [db]
     nginx:
         image: ghcr.io/phinocio/loadorderlibrary-nginx:testing
@@ -45,6 +46,8 @@ services:
 
 networks:
     lol:
+        external: true
+    lol-db:
         driver: bridge
 
 volumes:
