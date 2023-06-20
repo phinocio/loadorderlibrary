@@ -36,8 +36,6 @@ services:
         container_name: lol-testing-nginx
         restart: unless-stopped
         profiles: ['testing', 'local']
-        volumes:
-            - /var/log/nginx/:/var/log/nginx
         networks:
             - lol
         depends_on: [app]
