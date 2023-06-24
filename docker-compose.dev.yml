@@ -1,9 +1,10 @@
 ---
-# Local Development docker-compose File.
+# Docker compose file for testing environment
+
 services:
     db:
         image: mariadb:10.9
-        container_name: lol-dev-db
+        container_name: lol-testing-db
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
@@ -11,6 +12,7 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_USER: ${DB_USERNAME}
             SERVICE_NAME: mariadb
+        profiles: ['testing', 'local']
         volumes:
             - lol-testing-db:/var/lib/mysql
         networks:
@@ -20,25 +22,31 @@ services:
             context: .
             args:
                 uid: 1000
-            dockerfile: docker/dev/app/Dockerfile
-            target: app-dev
-        image: loadorderlibrary:dev
-        container_name: lol-dev-app
+            dockerfile: docker/testing/app/Dockerfile
+            target: app-testing
+        image: loadorderlibrary:testing
+        container_name: lol-testing-app
         restart: unless-stopped
         entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan migrate:fresh --seed && exec php-fpm"
+        env_file: .env
+        # user: '2100:2100'
+        profiles: ['testing', 'local']
+        ports:
+            - '127.0.0.1:9001:9000'
         volumes:
-            - ./:/var/www
+            - ./storage/:/var/www/storage
         networks:
             - lol
         depends_on: [db]
     nginx:
         build:
             context: .
-            dockerfile: docker/dev/nginx/Dockerfile
-            target: nginx-dev
-        image: loadorderlibrary-nginx:dev
-        container_name: lol-dev-nginx
+            dockerfile: docker/testing/nginx/Dockerfile
+            target: nginx-testing
+        image: loadorderlibrary-nginx:testing
+        container_name: lol-testing-nginx
         restart: unless-stopped
+        profiles: ['local']
         ports:
             - '8001:80'
         volumes:
