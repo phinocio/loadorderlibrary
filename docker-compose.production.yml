@@ -37,8 +37,7 @@ services:
         restart: unless-stopped
         profiles: ['prod', 'local']
         networks:
-            lol:
-                ipv4_address: 172.20.0.4
+            - lol
         depends_on: [app]
 
 networks:
