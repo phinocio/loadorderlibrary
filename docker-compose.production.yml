@@ -21,7 +21,7 @@ services:
         image: ghcr.io/phinocio/loadorderlibrary:latest
         container_name: lol-prod-app
         restart: unless-stopped
-        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate -f && exec php-fpm"
+        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate --force && exec php-fpm"
         env_file: .env
         user: '2100:2100'
         profiles: ['prod', 'local']
