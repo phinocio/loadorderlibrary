@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use App\Models\Backup;
+use Spatie\Backup\Events\CleanupWasSuccessful;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -18,8 +20,8 @@ class CleanupWasSuccessfulListener
     /**
      * Handle the event.
      */
-    public function handle(object $event): void
+    public function handle(CleanupWasSuccessful $event): void
     {
-        //
+        Backup::whereFile($event->backupDestination->oldestBackup()->path())->delete();
     }
 }

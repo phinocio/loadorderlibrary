@@ -148,7 +148,7 @@ class AdminController extends Controller
 	{
 		$backup = Backup::find($id);
 
-		return \Storage::download('backup/' . $backup->file);
+		return \Storage::download('backups/' . $backup->file);
 	}
 
 	public function deleteBackup($id)
@@ -156,7 +156,7 @@ class AdminController extends Controller
 		$backup = Backup::find($id);
 
 		// Delete on disk
-		Storage::disk('backup')->delete($backup->file);
+		Storage::disk('backups')->delete($backup->file);
 
 		// Delete from DB
 		$backup->delete();
