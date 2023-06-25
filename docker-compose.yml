@@ -11,6 +11,8 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_USER: ${DB_USERNAME}
             SERVICE_NAME: mariadb
+        ports:
+            - '3306:3306'
         volumes:
             - lol-testing-db:/var/lib/mysql
         networks:
@@ -25,7 +27,7 @@ services:
         image: loadorderlibrary:dev
         container_name: lol-dev-app
         restart: unless-stopped
-        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan migrate:fresh --seed && exec php-fpm"
+        entrypoint: sh -c "php artisan migrate:fresh --seed && exec php-fpm"
         volumes:
             - ./:/var/www
         networks:

@@ -60,9 +60,9 @@ return [
             'root' => storage_path('app/uploads')
         ],
 
-		'backup' => [
+		'backups' => [
 			'driver' => 'local',
-			'root' => storage_path('app/backup')
+			'root' => storage_path('app/backups')
 		],
 
 		'tmp' => [

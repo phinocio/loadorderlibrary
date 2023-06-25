@@ -19,17 +19,17 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
-    {
+    protected function schedule(Schedule $schedule): void
+	{
 		$schedule->command('delete:temp')->daily();
 		$schedule->command('delete:orphaned')->weekly();
 		$schedule->command('delete:expired')->everyMinute();
-		
-		$schedule->command('backup:db')->sundays()->at('03:00')->evenInMaintenanceMode();
-		$schedule->command('delete:backups')->sundays()->at('03:00')->evenInMaintenanceMode();
+
+		$schedule->command('backup:clean')->daily()->at('01:00')->environments(['production']);
+		$schedule->command('backup:run')->daily()->at('01:30')->environments(['production']);
     }
 
     /**
@@ -37,8 +37,8 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
-    protected function commands()
-    {
+    protected function commands(): void
+	{
         $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');

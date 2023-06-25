@@ -10,7 +10,6 @@
 			<th scope="col">File</th>
 			<th scope="col">Size in MB</th>
 			<th scope="col">Created</th>
-			<th scope="col">Deletes In</th>
 			<th scope="col">Actions</th>
 		</tr>
 	</thead>
@@ -18,11 +17,8 @@
 		@foreach($backups as $backup)
 		<tr>
 			<td><strong>{{ $backup->file }}</strong></td>
-			<td>{{ $backup->size }}</td>
+			<td>{{ number_format($backup->size / 1000000, 2, '.', '') }}</td>
 			<td>{{ $backup->created_at->diffForHumans() }}</td>
-			<td>{{ $backup->expires_at->diffForHumans(
-					['parts' => '1 | Carbon::ROUND | Carbon::SEQUENTIAL_PARTS_ONLY']		
-			 ) }}</td>
 			<td class="d-flex">
 				<a class="ml-2 btn btn-secondary btn-sm text-white" href="/admin/backups/download/{{$backup->id}}" role="button">Download</a>
 				<form class="form-inline mx-2" method="POST" action="/admin/backups/delete/{{$backup->id}}">
