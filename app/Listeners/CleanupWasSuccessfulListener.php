@@ -22,6 +22,8 @@ class CleanupWasSuccessfulListener
      */
     public function handle(CleanupWasSuccessful $event): void
     {
-        Backup::whereFile($event->backupDestination->oldestBackup()->path())->delete();
+		if ($event->backupDestination->filesystemType() === 'localfilesystemadapter') {
+			Backup::whereFile($event->backupDestination->oldestBackup()->path())->delete();
+		}
     }
 }

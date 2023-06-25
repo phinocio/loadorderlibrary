@@ -25,9 +25,12 @@ class BackupWasSuccessfulListener
      */
     public function handle(BackupWasSuccessful $event): void
     {
-		$backup = new Backup();
-		$backup->file = $event->backupDestination->newestBackup()->path();
-		$backup->size = $event->backupDestination->newestBackup()->sizeInBytes();
-		$backup->save();
+
+		if ($event->backupDestination->filesystemType() === 'localfilesystemadapter') {
+			$backup = new Backup();
+			$backup->file = $event->backupDestination->newestBackup()->path();
+			$backup->size = $event->backupDestination->newestBackup()->sizeInBytes();
+			$backup->save();
+		}
     }
 }
