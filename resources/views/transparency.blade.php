@@ -8,7 +8,7 @@
 	<div class="col-md-12">
 		<div style="display:flex; align-items: center; justify-content: space-between">
 			<h1 class="text-white">Transparency</h1>
-			<small class="text-white">Last Updated: 2022-10-19</small>
+			<small class="text-white">Last Updated: 2023-06-25</small>
 		</div>
 
 
@@ -44,13 +44,28 @@
 		</table>
 
 		<h2 class="text-white">Income</h2>
-		<h5 class="text-white"><b>TLDR:</b> $44.43 CAD lifetime</h5>
+		<h5 class="text-white"><b>TLDR:</b> $123.51 CAD lifetime</h5>
 		<span class="text-white">NOTE: Not in the table is 0.0021051 ETH received on July 26, 2021 as I no longer accept cryptocurrency donations.</span>
 		<table class="table table-striped table-dark">
 			<tr>
 				<th>Date</th>
 				<th>Income</th>
 				<th>Source</th>
+			</tr>
+			<tr>
+				<td>May 2023</td>
+				<td>$7.18 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
+				<td>April 2023</td>
+				<td>$7.16 CAD</td>
+				<td>Patreon</td>
+			</tr>
+			<tr>
+				<td>March 2023</td>
+				<td>$7.16 CAD</td>
+				<td>Patreon</td>
 			</tr>
 			<tr>
 				<td>February 2023</td>
@@ -63,9 +78,12 @@
 				<td>Patreon</td>
 			</tr>
 			<tr>
-				<td>January 2022</td>
+				<td>January 2023</td>
 				<td>$20 CAD</td>
 				<td>Ko-fi</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align: center; font-weight: bold;">New Year 2023</td>
 			</tr>
 			<tr>
 				<td>December 2022</td>
@@ -91,6 +109,9 @@
 				<td>September 2022</td>
 				<td>$40.00 CAD</td>
 				<td>Ko-fi</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align: center; font-weight: bold;">New Year 2022</td>
 			</tr>
 			<tr>
 				<td>December 2021 - August 2022</td>
@@ -119,7 +140,7 @@
 			</tr>
 			<tr>
 				<th>Total Income</th>
-				<td>$102.01 CAD</td>
+				<td>$123.51 CAD</td>
 				<td></td>
 			</tr>
 		</table>
@@ -135,10 +156,10 @@
 					<div class="card-body p-0">
 						<ul class="list-group bg-dark">
 							@foreach($listStats as $stat)
-								<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-									{{ $stat['name'] }}
-									<span class="badge bg-secondary rounded-pill">{{ $stat['value'] }}</span>
-								</li>
+							<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+								{{ $stat['name'] }}
+								<span class="badge bg-secondary rounded-pill">{{ $stat['value'] }}</span>
+							</li>
 							@endforeach
 						</ul>
 					</div>
@@ -154,10 +175,10 @@
 					<div class="card-body p-0">
 						<ul class="list-group bg-dark">
 							@foreach($userStats as $stat)
-								<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-									{{ $stat['name'] }}
-									<span class="badge bg-secondary rounded-pill">{{ $stat['value'] }}</span>
-								</li>
+							<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+								{{ $stat['name'] }}
+								<span class="badge bg-secondary rounded-pill">{{ $stat['value'] }}</span>
+							</li>
 							@endforeach
 						</ul>
 					</div>
