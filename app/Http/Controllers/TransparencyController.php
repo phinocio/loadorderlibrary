@@ -9,14 +9,16 @@ use Illuminate\Http\Request;
 
 class TransparencyController extends Controller
 {
-    public function index() {
+	public function index()
+	{
 		$userStats = [];
 		$listStats = [];
 		$fileStats = [];
 
-		$users = User::orderBy('created_at', 'desc')->get();
-		$lists = LoadOrder::all();
+		$users = User::query()->select(['id', 'is_admin', 'is_verified', 'created_at'])->with(['lists:id,user_id'])->latest('created_at')->get();
+		$lists = LoadOrder::query()->select(['id', 'is_private', 'user_id'])->get();
 		$files = File::with('lists')->get();
+
 		$tmpFiles = \Storage::disk('tmp')->allFiles();
 
 		$fileSize = 0;
@@ -84,8 +86,8 @@ class TransparencyController extends Controller
 		$listStats[] = [
 			"name" => "Percent Private",
 			"value" => number_format(((count($lists->filter(function ($value, $key) {
-							return $value->is_private === 1;
-						})) / count($lists)) * 100), 2, '.', '') . "%"
+				return $value->is_private === 1;
+			})) / count($lists)) * 100), 2, '.', '') . "%"
 		];
 
 		$listStats[] = [
@@ -98,8 +100,8 @@ class TransparencyController extends Controller
 		$listStats[] = [
 			"name" => "Percent Anonymous",
 			"value" => number_format(((count($lists->filter(function ($value, $key) {
-							return $value->user_id === null;
-						})) / count($lists)) * 100), 2, '.', '') . "%"
+				return $value->user_id === null;
+			})) / count($lists)) * 100), 2, '.', '') . "%"
 		];
 
 		$fileStats[] = [
@@ -118,6 +120,5 @@ class TransparencyController extends Controller
 		];
 
 		return view('transparency')->with(['userStats' => $userStats, 'listStats' => $listStats, 'fileStats' => $fileStats]);
-
 	}
 }

@@ -17,17 +17,17 @@ class AdminController extends Controller
 		$this->middleware(IsAdmin::class);
 	}
 
-    public function stats()
+	public function stats()
 	{
 		$userStats = [];
 		$listStats = [];
 		$fileStats = [];
 
-		$users = User::orderBy('created_at', 'desc')->get();
-		$lists = LoadOrder::all();
-		$files = File::with('lists')->get();
-		$filesInLists = File::has('lists')->get();
-		$orphanedFiles = File::doesntHave('lists')->get();
+		$users = User::query()->select(['id', 'is_admin', 'is_verified', 'created_at'])->with(['lists:id,user_id'])->latest('created_at')->get();
+		$lists = LoadOrder::query()->select(['id', 'is_private', 'user_id'])->get();
+		$files = File::query()->select(['id', 'size_in_bytes'])->get();
+		$filesInLists = File::with('lists:id')->has('lists')->get()->count();
+		$orphanedFiles = File::doesntHave('lists')->get()->count();
 		$tmpFiles = \Storage::disk('tmp')->allFiles();
 
 		$fileSize = 0;
@@ -119,7 +119,17 @@ class AdminController extends Controller
 		];
 
 		$fileStats[] = [
-			"name" => "File Size",
+			"name" => "Files In Lists",
+			"value" => $filesInLists
+		];
+
+		$fileStats[] = [
+			"name" => "Orphaned Files",
+			"value" => $orphanedFiles
+		];
+
+		$fileStats[] = [
+			"name" => "Total File Size",
 			"value" => number_format($fileSize / 1000000, 2, '.', '') // Divide by 1 million to get it into MB.
 		];
 
@@ -128,7 +138,7 @@ class AdminController extends Controller
 			"value" => number_format($tmpSize / 1000000, 2, '.', '') // Divide by 1 million to get it into MB.
 		];
 
-		return view('admin.stats')->with(['userStats' => $userStats, 'listStats' => $listStats, 'fileStats' => $fileStats, 'orphanedFiles' => $orphanedFiles, 'filesInLists' => $filesInLists]);
+		return view('admin.stats')->with(['userStats' => $userStats, 'listStats' => $listStats, 'fileStats' => $fileStats]);
 	}
 
 	public function users()
@@ -164,7 +174,8 @@ class AdminController extends Controller
 		return redirect()->back();
 	}
 
-	public function verify(User $user) {
+	public function verify(User $user)
+	{
 
 		$user->is_verified = !$user->is_verified;
 		$user->save();
@@ -172,7 +183,8 @@ class AdminController extends Controller
 		return redirect()->back();
 	}
 
-	public function serverStats() {
+	public function serverStats()
+	{
 		return \File::get(resource_path('static/report.html'));
 	}
 }

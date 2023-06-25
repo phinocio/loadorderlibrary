@@ -135,7 +135,6 @@
 					<p>
 						<a href="https://github.com/phinocio/loadorderlibrary" target="_blank" rel="noopener noreferrer">Github</a> |
 						<a href="https://discord.gg/K3KnEgrQE4" target="_blank" rel="noopener noreferrer">Discord</a> |
-						<a href="https://www.reddit.com/r/LoadOrderLibrary/" target="_blank" rel="noopener noreferrer">Reddit</a> |
 						<a href="/support-me">Support Me</a> |
 						<a href="/transparency">Expenses Transparency & Stats</a>
 					</p>

@@ -59,12 +59,22 @@
 
 						<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
 							{{ $fileStats[1]['name'] }}
-							<span class="badge {{ ($fileStats[1]['value'] > 10) ? 'bg-danger' : 'bg-secondary' }} rounded-pill">{{ $fileStats[1]['value'] }} MB</span>
+							<span class="badge bg-secondary rounded-pill">{{ $fileStats[1]['value'] }}</span>
 						</li>
 
 						<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
 							{{ $fileStats[2]['name'] }}
-							<span class="badge {{ ($fileStats[1]['value'] > 10) ? 'bg-danger' : 'bg-secondary' }} rounded-pill">{{ $fileStats[2]['value'] }} MB</span>
+							<span class="badge bg-secondary rounded-pill">{{ $fileStats[2]['value'] }}</span>
+						</li>
+
+						<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+							{{ $fileStats[3]['name'] }}
+							<span class="badge {{ ($fileStats[3]['value'] > 1000) ? 'bg-danger' : 'bg-primary' }} rounded-pill">{{ $fileStats[3]['value'] }} MB</span>
+						</li>
+
+						<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+							{{ $fileStats[4]['name'] }}
+							<span class="badge {{ ($fileStats[4]['value'] > 10) ? 'bg-danger' : 'bg-primary' }} rounded-pill">{{ $fileStats[4]['value'] }} MB</span>
 						</li>
 					</ul>
 				</div>
@@ -72,68 +82,6 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<div class="accordion-item bg-dark mb-1">
-				<div class="accordion-header d-flex justify-content-between align-items-center pe-3">
-					<h2 class="m-0 p-0" id="heading-in-lists">
-						<button class="accordion-button collapsed bg-dark text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-in-lists" aria-expanded="false" aria-controls="collapse-in-lists">
-							<span class="text-white"><b>&plus;</b></span> <b> Files In Lists</b>
-						</button>
 
-					</h2>
-				</div>
-				<div id="collapse-in-lists" class="accordion-collapse collapse" aria-labelledby="heading-in-lists" data-bs-parent="#accordion">
-					<div class="accordion-body text-white p-0">
-						<table class="table table-striped table-dark text-white">
-							<thead>
-								<tr>
-									<th scope="col">File</th>
-									<th scope="col">Size (Bytes)</th>
-									<th scope="col">Lists</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach($filesInLists as $file)
-								<tr>
-									<td>{{ $file->name }}</td>
-									<td>{{ $file->size_in_bytes }}</td>
-									<td><span class="badge bg-secondary rounded-pill">{{ count($file->lists) }}</span></td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-12">
-			<div class="accordion-item bg-dark mb-1">
-				<div class="accordion-header d-flex justify-content-between align-items-center pe-3">
-					<h2 class="m-0 p-0" id="heading-orphaned">
-						<button class="accordion-button collapsed bg-dark text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-orphaned" aria-expanded="false" aria-controls="collapse-orphaned">
-							<span class="text-white"><b>&plus;</b></span> <b>Orphaned Files</b>
-						</button>
-					</h2>
-					<span class="badge rounded-pill bg-danger">{{ count($orphanedFiles) }}</span>
-				</div>
-				<div id="collapse-orphaned" class="accordion-collapse collapse" aria-labelledby="heading-orphaned" data-bs-parent="#accordion">
-					<div class="accordion-body text-white p-0">
-						<ul class="list-group bg-dark" id="list-orphaned">
-							@foreach($orphanedFiles as $file)
-							<li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-								{{ $file['name'] }}
-								<span class="badge bg-danger">TODO: Delete</span>
-							</li>
-							@endforeach
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 @endsection
