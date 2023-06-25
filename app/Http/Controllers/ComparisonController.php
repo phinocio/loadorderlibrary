@@ -12,7 +12,7 @@ class ComparisonController extends Controller
 	public function index(): View
 	{
 
-		$loadOrders = LoadOrder::where('is_private', false)->orderBy('created_at', 'desc')->get();
+		$loadOrders = LoadOrder::whereIsPrivate(false)->with('author:id,name,is_verified')->orderBy('created_at', 'desc')->get();
 
 		return view('compare')->with('loadOrders', $loadOrders);
 	}

@@ -25,9 +25,9 @@ class HomeController extends Controller
         $loadOrders = '';
 
         if (\Auth::check()) {
-            $loadOrders = \App\Models\LoadOrder::where('user_id', \Auth::user()->id)->orderBy('updated_at', 'desc')->get();
-		}
-		
+            $loadOrders = \App\Models\LoadOrder::where('user_id', \Auth::user()->id)->with(['game', 'author:id,name,is_verified'])->orderBy('updated_at', 'desc')->get();
+        }
+
         return view('home')
             ->with('loadOrders', $loadOrders);
     }
