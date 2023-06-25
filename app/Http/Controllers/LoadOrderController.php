@@ -29,17 +29,20 @@ class LoadOrderController extends Controller
 	 */
 	public function index(Request $request): View
 	{
-		$game = Game::whereName($request->query('game'))->first();
-		$author = User::whereName($request->query('author'))->first();
-		$query = LoadOrder::whereIsPrivate(false)->with(['game', 'author']);
+		// $game = Game::whereName($request->query('game'))->first();
+		// $author = User::whereName($request->query('author'))->first();
+		$query = LoadOrder::query()
+			->whereIsPrivate(false)
+			->with(['game', 'author:id,name,is_verified']);
 		$sort = $request->query('sort') ?? null;
 
-
-		if ($game) {
+		if ($request->query('game') && $request->query('game') !== 'all') {
+			$game = Game::whereName($request->query('game'))->first();
 			$query->whereGameId($game->id);
 		}
 
-		if ($author) {
+		if ($request->query('author')) {
+			$author = User::whereName($request->query('author'))->first();
 			$query->whereUserId($author->id);
 		}
 
@@ -51,7 +54,7 @@ class LoadOrderController extends Controller
 
 		$loadOrders = $query->get();
 
-		return view('load-orders')->with(['loadOrders' => $loadOrders, 'game' => $game]);
+		return view('load-orders')->with(['loadOrders' => $loadOrders]);
 	}
 
 	/**
@@ -90,7 +93,7 @@ class LoadOrderController extends Controller
 		// Temp code for auto deleting anonymous lists until I remake it better for the API.
 		$expires = null;
 
-		if(isset($validated['expires'])) {
+		if (isset($validated['expires'])) {
 			switch ($validated['expires']) {
 				case '3h':
 					$expires = Carbon::now()->addHours(3);
@@ -175,7 +178,6 @@ class LoadOrderController extends Controller
 						"class" => $class
 					];
 				}
-
 			}
 
 			$files[] = ['name' => $fileName, 'content' => $parsedContent];
@@ -183,7 +185,7 @@ class LoadOrderController extends Controller
 
 		$author = $loadOrder->author ? $loadOrder->author->name : 'Anonymous';
 
-//		dd($files);
+		//		dd($files);
 		return view('load-order')->with(['loadOrder' => $loadOrder, 'files' => $files, 'author' => $author]);
 	}
 
@@ -196,8 +198,7 @@ class LoadOrderController extends Controller
 	 */
 	public function edit(LoadOrder $loadOrder)
 	{
-		if (auth()->user()->id !== $loadOrder->user_id)
-		{
+		if (auth()->user()->id !== $loadOrder->user_id) {
 			abort(403);
 		}
 
@@ -293,7 +294,7 @@ class LoadOrderController extends Controller
 
 		$file = $loadOrder->files->firstWhere('clean_name', $fileName);
 		// The list doesn't have the file wanted, so 404
-		if(!$file){
+		if (!$file) {
 			abort(404);
 		}
 		// We strtolower() here so I don't need to edit the database going forward with files all being lowercase - only the already uploaded files will need to be lowercased
@@ -329,7 +330,6 @@ class LoadOrderController extends Controller
 					"line" => substr($line, 1),
 					"class" => $class
 				];
-
 			} else {
 				// First, check if the file is plugins.txt
 				if ($fileName == "plugins.txt") {
@@ -345,7 +345,7 @@ class LoadOrderController extends Controller
 		array_push($files, ['name' => $fileName, 'content' => $parsedContent]);
 
 		return response(view('embeds.files')->with(['loadOrder' => $loadOrder, 'file' => $files[0]]), 200)
-				->header('Content-Security-Policy', 'frame-ancestors * ');
+			->header('Content-Security-Policy', 'frame-ancestors * ');
 	}
 
 	/**
@@ -405,7 +405,8 @@ class LoadOrderController extends Controller
 		return in_array('uploads/' . $fileName, \Storage::files('uploads'));
 	}
 
-	private function generateModlistTxt(array $modlist): array {
+	private function generateModlistTxt(array $modlist): array
+	{
 		$separators = [['name' => 'default', 'class' => 'default', 'content' => [], 'original_name' => 'default']];
 		foreach ($modlist as $line) {
 			if (str_ends_with($line, '_separator')) {
@@ -418,7 +419,7 @@ class LoadOrderController extends Controller
 		foreach ($modlist as $line) {
 			if (count($separators) > 1) {
 				if ($line == $separators[$separatorIndex + 1]['original_name']) {
-					if($separatorIndex < (count($separators) - 2)) {
+					if ($separatorIndex < (count($separators) - 2)) {
 						$separatorIndex++;
 					}
 				} else {
