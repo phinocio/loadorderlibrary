@@ -2,26 +2,11 @@
 # Docker compose file for testing environment
 
 services:
-    db:
-        image: mariadb:10.9
-        container_name: lol-testing-db
-        restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
-            SERVICE_NAME: mariadb
-        profiles: ['testing', 'local']
-        volumes:
-            - lol-testing-db:/var/lib/mysql
-        networks:
-            - lol-db
     app:
         image: ghcr.io/phinocio/loadorderlibrary:testing
         container_name: lol-testing-app
         restart: unless-stopped
-        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate:fresh --seed && exec php-fpm"
+        entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && exec php-fpm"
         env_file: .env
         user: '2100:2100'
         profiles: ['testing', 'local']
@@ -30,7 +15,7 @@ services:
         networks:
             - lol
             - lol-db
-        depends_on: [db]
+        depends_on: [lol-testing-db]
     nginx:
         image: ghcr.io/phinocio/loadorderlibrary-nginx:testing
         container_name: lol-testing-nginx
@@ -44,7 +29,4 @@ networks:
     lol:
         external: true
     lol-db:
-        driver: bridge
-
-volumes:
-    lol-testing-db:
+        external: true
