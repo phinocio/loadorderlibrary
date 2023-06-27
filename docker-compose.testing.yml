@@ -15,7 +15,8 @@ services:
         networks:
             - lol
             - lol-db
-        depends_on: [lol-testing-db]
+        external_links:
+            - lol-testing-db
     nginx:
         image: ghcr.io/phinocio/loadorderlibrary-nginx:testing
         container_name: lol-testing-nginx
