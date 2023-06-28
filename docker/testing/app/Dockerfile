@@ -59,6 +59,6 @@ COPY --from=build-testing-node /app/public /var/www/public
 COPY --from=build-testing-composer /app/vendor ./vendor
 COPY --from=build-testing-composer /app/bootstrap ./bootstrap
 
-RUN chown -R $user:$user /var/www && chown -R $user:$group /var/www/storage/app/uploads
+RUN mkdir /var/www/storage/app/uploads && chown -R $user:$user /var/www && chown -R $user:$group /var/www/storage/app/uploads
 
 USER $user
