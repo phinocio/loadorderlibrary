@@ -12,6 +12,7 @@ services:
         profiles: ['testing', 'local']
         volumes:
             - ./storage/:/var/www/storage
+            - /srv/testingapi.loadorderlibrary.com/storage/app/uploads:/var/www/storage/app/uploads
         networks:
             - lol
             - lol-db
