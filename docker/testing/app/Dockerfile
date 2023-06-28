@@ -30,8 +30,8 @@ ARG user=loltesting
 ARG group=uploads
 ARG uid=2100
 ARG gid=2010
-RUN adduser -u $uid -D $user --disabled-password
-RUN addgroup -g $gid $group && addgroup $user $group
+RUN addgroup -g $gid $group && \
+    adduser -u $uid -D $user -G $group
 
 WORKDIR /var/www
 
@@ -59,6 +59,6 @@ COPY --from=build-testing-node /app/public /var/www/public
 COPY --from=build-testing-composer /app/vendor ./vendor
 COPY --from=build-testing-composer /app/bootstrap ./bootstrap
 
-RUN mkdir /var/www/storage/app/uploads && chown -R $user:$user /var/www && chown -R $user:$group /var/www/storage/app/uploads
+RUN mkdir /var/www/storage/app/uploads && chown -R $user:$group/var/www
 
 USER $user
