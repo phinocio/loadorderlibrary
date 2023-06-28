@@ -27,11 +27,8 @@ RUN npm run prod
 FROM php:8.2-fpm-alpine3.18 as app-testing
 
 ARG user=loltesting
-ARG group=uploads
 ARG uid=2100
-ARG gid=2010
-RUN addgroup -g $gid $group && \
-    adduser -u $uid -D $user -G $group
+RUN adduser -u $uid -D $user
 
 WORKDIR /var/www
 
@@ -59,6 +56,6 @@ COPY --from=build-testing-node /app/public /var/www/public
 COPY --from=build-testing-composer /app/vendor ./vendor
 COPY --from=build-testing-composer /app/bootstrap ./bootstrap
 
-RUN mkdir /var/www/storage/app/uploads && chown -R $user:$group/var/www
+RUN chown -R $user:$user /var/www
 
 USER $user
