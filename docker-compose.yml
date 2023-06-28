@@ -1,38 +1,43 @@
 ---
 # Local Development docker-compose File.
 services:
-    db:
-        image: mariadb:10.9
-        container_name: lol-dev-db
-        restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
-            SERVICE_NAME: mariadb
-        ports:
-            - '3306:3306'
-        volumes:
-            - lol-testing-db:/var/lib/mysql
-        networks:
-            - lol
+    # db:
+    #     image: mariadb:10.9
+    #     container_name: lol-dev-db
+    #     restart: unless-stopped
+    #     environment:
+    #         MYSQL_DATABASE: ${DB_DATABASE}
+    #         MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    #         MYSQL_PASSWORD: ${DB_PASSWORD}
+    #         MYSQL_USER: ${DB_USERNAME}
+    #         SERVICE_NAME: mariadb
+    #     ports:
+    #         - '3306:3306'
+    #     volumes:
+    #         - lol-testing-db:/var/lib/mysql
+    #     networks:
+    #         - lol
+    #         - lol-db
     app:
         build:
             context: .
             args:
                 uid: 1000
+                gid: 2010
             dockerfile: docker/dev/app/Dockerfile
             target: app-dev
         image: loadorderlibrary:dev
         container_name: lol-dev-app
         restart: unless-stopped
-        entrypoint: sh -c "php artisan migrate:fresh --seed && exec php-fpm"
+        entrypoint: sh -c "exec php-fpm"
         volumes:
             - ./:/var/www
+            - /home/alice/Projects/APIs/loadorderlibrary-api/storage/app/uploads:/var/www/storage/app/uploads
         networks:
             - lol
-        depends_on: [db]
+            - lol-db
+        external_links:
+            - lol-dev-db
     nginx:
         build:
             context: .
@@ -51,7 +56,9 @@ services:
 
 networks:
     lol:
-        driver: bridge
+        external: true
+    lol-db:
+        external: true
 
 volumes:
     lol-testing-db:

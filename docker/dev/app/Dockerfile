@@ -26,10 +26,13 @@ RUN npm run prod
 # Development app
 FROM php:8.2-fpm-alpine3.18 as app-dev
 
-ARG user=loltesting
+ARG user=loldev
+ARG group=uploads
 # Most users are 1000 UID, use ARG if it's different...
 ARG uid=1000
-RUN adduser -u $uid -D $user
+ARG gid=2010
+RUN adduser -u $uid -D $user --disabled-password
+RUN addgroup -g $gid $group && addgroup $user $group
 
 WORKDIR /var/www
 
@@ -57,7 +60,7 @@ COPY . .
 COPY --from=build-dev-composer /app/vendor ./vendor
 COPY --from=build-dev-composer /app/bootstrap ./bootstrap
 
-RUN chown -R $user:$user /var/www
+RUN chown -R $user:$user /var/www && chown -R $user:$group /var/www/storage/app/uploads
 
 RUN rmdir /var/www/html
 
