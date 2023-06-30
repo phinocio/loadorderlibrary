@@ -11,8 +11,8 @@ services:
         user: '2100:2100'
         profiles: ['testing', 'local']
         volumes:
-            - ./storage:/srv/testingapi.loadorderlibrary.com/storage
-            - /srv/testingapi.loadorderlibrary.com/storage/app/uploads:/srv/testingapi.loadorderlibrary.com/storage/app/uploads
+            - ./storage:/srv/testing.loadorderlibrary.com/storage
+            - /srv/testingapi.loadorderlibrary.com/storage/app/uploads:/srv/testing.loadorderlibrary.com/storage/app/uploads
         networks:
             - lol
             - lol-db
