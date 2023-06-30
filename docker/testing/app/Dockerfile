@@ -30,7 +30,7 @@ ARG user=loltesting
 ARG uid=2100
 RUN adduser -u $uid -D $user
 
-WORKDIR /var/www
+WORKDIR /srv/testing.loadorderlibrary.com
 
 # Install system deps
 RUN apk update && apk add \
@@ -52,10 +52,10 @@ RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 # Copy project to container
 COPY . .
-COPY --from=build-testing-node /app/public /var/www/public
+COPY --from=build-testing-node /app/public ./public
 COPY --from=build-testing-composer /app/vendor ./vendor
 COPY --from=build-testing-composer /app/bootstrap ./bootstrap
 
-RUN chown -R $user:$user /var/www
+RUN chown -R $user:$user /srv/testing.loadorderlibrary.com
 
 USER $user
