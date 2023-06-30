@@ -15,6 +15,6 @@ RUN npm run prod
 # Testing nginx
 FROM nginx:1.25.1-alpine as nginx-testing
 
-COPY --from=build-testing-node /app/public /var/www/public
+COPY --from=build-testing-node /app/public /srv/testing.loadorderlibrary.com/public
 COPY ./docker/testing/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/testing/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
