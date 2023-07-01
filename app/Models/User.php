@@ -37,20 +37,25 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime'
-	];
+    ];
 
-	public function lists()
-	{
-		return $this->hasMany('\App\Models\LoadOrder');
-	}
+    public function lists()
+    {
+        return $this->hasMany('\App\Models\LoadOrder');
+    }
 
-	public function isAdmin()
-	{
-		return $this->is_admin === 1;
-	}
+    public function isAdmin()
+    {
+        return $this->is_admin === 1;
+    }
 
-	// public function enabledTwoFactor()
-	// {
-	// 	return $this->two_factor_secret !== null;
-	// }
+    public function sessions()
+    {
+        return $this->hasMany('\App\Models\Session');
+    }
+
+    // public function enabledTwoFactor()
+    // {
+    // 	return $this->two_factor_secret !== null;
+    // }
 }

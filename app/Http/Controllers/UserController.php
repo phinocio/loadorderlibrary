@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Session;
+
 class UserController extends Controller
 {
-    public function index() {
-		return view('user.profile');
+	public function index()
+	{
+		$sessions = Session::whereUserId(auth()->user()->id)->get();
+		return view('user.profile')->with(['sessions' => $sessions]);
 	}
 
-	public function destroy() {
+	public function destroy()
+	{
 		$name = auth()->user()->name;
 		try {
 			flash('Account <b>' . $name . '</b> and all its lists successfully deleted!')->success()->important();

@@ -115,6 +115,25 @@
 	</div>
 </div>
 
+<!-- Manage Sessions -->
+
+<div class="my-2 row justify-content-center">
+	<div class="col-md-12">
+		<div class="card text-white bg-dark">
+			<div class="card-header">{{ __('Your Sessions') }}</div>
+			<div id="password-pwned" class="alert alert-danger d-none" role="alert">
+				The password you are trying to use has been seen in a data breach. While <b>you can still change to it</b>, it is highly recommended not to, as it severely decreases the security of your account. Please consider using another password. This message will go away when a safe password is detected.
+			</div>
+			<div class="card-body">
+				@foreach($sessions as $session)
+				<p>IP: {{ $session->ip_address }}</p>
+				<p>User Agent: {{ $session->user_agent }}</p>
+				@endforeach
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- Enable 2FA Form -->
 
 <!-- Delete Account Form -->
