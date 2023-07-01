@@ -29,9 +29,5 @@ class AppServiceProvider extends ServiceProvider
 		Model::preventLazyLoading(!app()->isProduction());
 		Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
 		Paginator::useBootstrap();
-
-		LogViewer::auth(function ($request) {
-			return $request->user()?->isAdmin() ?? false;
-		});
 	}
 }
