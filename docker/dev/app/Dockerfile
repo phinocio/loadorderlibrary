@@ -38,8 +38,7 @@ WORKDIR /var/www
 
 # Install system deps
 RUN apk update && apk add \
-    libzip-dev \
-    mariadb-client
+    libzip-dev
 
 # Clear cache
 RUN apk cache clean && \
