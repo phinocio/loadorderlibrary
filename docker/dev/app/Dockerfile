@@ -27,14 +27,10 @@ RUN npm run prod
 FROM php:8.2-fpm-alpine3.18 as app-dev
 
 ARG user=loldev
-ARG group=uploads
-# Most users are 1000 UID, use ARG if it's different...
 ARG uid=1000
-ARG gid=2010
-RUN adduser -u $uid -D $user --disabled-password
-RUN addgroup -g $gid $group && addgroup $user $group
+RUN adduser -u $uid -D $user
 
-WORKDIR /var/www
+WORKDIR /srv/dev.loadorderlibrary.com
 
 # Install system deps
 RUN apk update && apk add \
@@ -59,9 +55,7 @@ COPY . .
 COPY --from=build-dev-composer /app/vendor ./vendor
 COPY --from=build-dev-composer /app/bootstrap ./bootstrap
 
-RUN chown -R $user:$user /var/www && chown -R $user:$group /var/www/storage/app/uploads
-
-RUN rmdir /var/www/html
+RUN chown -R $user:$user /srv/dev.loadorderlibrary.com
 
 USER $user
 

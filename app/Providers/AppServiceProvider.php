@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Opcodes\LogViewer\Facades\LogViewer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -28,5 +29,9 @@ class AppServiceProvider extends ServiceProvider
 		Model::preventLazyLoading(!app()->isProduction());
 		Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
 		Paginator::useBootstrap();
+
+		LogViewer::auth(function ($request) {
+			return $request->user()?->isAdmin() ?? false;
+		});
 	}
 }
