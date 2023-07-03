@@ -23,7 +23,7 @@ class AdminController extends Controller
 		$listStats = [];
 		$fileStats = [];
 
-		$users = User::query()->select(['id', 'is_admin', 'is_verified', 'created_at'])->with(['lists:id,user_id'])->latest('created_at')->get();
+		$users = User::query()->select(['id', 'is_admin', 'email', 'is_verified', 'created_at'])->with(['lists:id,user_id'])->latest('created_at')->get();
 		$lists = LoadOrder::query()->select(['id', 'is_private', 'user_id'])->get();
 		$files = File::query()->select(['id', 'size_in_bytes'])->get();
 		$filesInLists = File::with('lists:id')->has('lists')->get()->count();
@@ -92,12 +92,19 @@ class AdminController extends Controller
 			}))
 		];
 
-		$listStats[] = [
-			"name" => "Percent Private",
-			"value" => number_format(((count($lists->filter(function ($value, $key) {
-				return $value->is_private === 1;
-			})) / count($lists)) * 100), 2, '.', '') . "%"
-		];
+		if (count($lists) > 0) {
+			$listStats[] = [
+				"name" => "Percent Private",
+				"value" => number_format(((count($lists->filter(function ($value, $key) {
+					return $value->is_private === 1;
+				})) / count($lists)) * 100), 2, '.', '') . "%"
+			];
+		} else {
+			$listStats[] = [
+				"name" => "Percent Private",
+				"value" => "0%"
+			];
+		}
 
 		$listStats[] = [
 			"name" => "Anonymous Lists",
@@ -106,12 +113,19 @@ class AdminController extends Controller
 			}))
 		];
 
-		$listStats[] = [
-			"name" => "Percent Anonymous",
-			"value" => number_format(((count($lists->filter(function ($value, $key) {
-				return $value->user_id === null;
-			})) / count($lists)) * 100), 2, '.', '') . "%"
-		];
+		if (count($lists) > 0) {
+			$listStats[] = [
+				"name" => "Percent Anonymous",
+				"value" => number_format(((count($lists->filter(function ($value, $key) {
+					return $value->user_id === null;
+				})) / count($lists)) * 100), 2, '.', '') . "%"
+			];
+		} else {
+			$listStats[] = [
+				"name" => "Percent Anonymous",
+				"value" => "0%"
+			];
+		}
 
 		$fileStats[] = [
 			"name" => "Files",
