@@ -46,6 +46,6 @@ class DeleteOrphaned extends Command
 			$orphan->delete();
 		}
 
-		$this->info('Orphaned Files cleared successfully');
+		$this->info(count($orphaned) . ' Orphaned Files cleared successfully');
 	}
 }
