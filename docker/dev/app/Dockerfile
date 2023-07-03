@@ -26,17 +26,15 @@ RUN npm run prod
 # Development app
 FROM php:8.2-fpm-alpine3.18 as app-dev
 
-ARG user=loltesting
-# Most users are 1000 UID, use ARG if it's different...
+ARG user=loldev
 ARG uid=1000
 RUN adduser -u $uid -D $user
 
-WORKDIR /var/www
+WORKDIR /srv/dev.loadorderlibrary.com
 
 # Install system deps
 RUN apk update && apk add \
-    libzip-dev \
-    mariadb-client
+    libzip-dev
 
 # Clear cache
 RUN apk cache clean && \
@@ -57,9 +55,7 @@ COPY . .
 COPY --from=build-dev-composer /app/vendor ./vendor
 COPY --from=build-dev-composer /app/bootstrap ./bootstrap
 
-RUN chown -R $user:$user /var/www
-
-RUN rmdir /var/www/html
+RUN chown -R $user:$user /srv/dev.loadorderlibrary.com
 
 USER $user
 

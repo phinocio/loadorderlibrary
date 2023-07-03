@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Opcodes\LogViewer\Facades\LogViewer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;

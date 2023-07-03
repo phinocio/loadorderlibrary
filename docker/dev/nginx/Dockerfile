@@ -15,6 +15,6 @@ RUN npm run dev
 # Dev Node
 FROM nginx:1.25.1-alpine as nginx-dev
 
-COPY --from=build-dev-node /app/public /var/www/public
+COPY --from=build-dev-node /app/public /srv/dev.loadorderlibrary.com/public
 COPY ./docker/dev/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/dev/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf

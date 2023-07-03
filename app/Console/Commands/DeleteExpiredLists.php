@@ -37,9 +37,13 @@ class DeleteExpiredLists extends Command
      *
      */
     public function handle(): void
-	{
-		LoadOrder::where('expires_at', '<', Carbon::now())->delete();
+    {
+        $expired = LoadOrder::where('expires_at', '<', Carbon::now())->get();
 
-		$this->info('Expired lists deleted successfully');
+        foreach ($expired as $expire) {
+            $expire->delete();
+        }
+
+        $this->info(count($expired) . ' expired lists deleted successfully');
     }
 }
