@@ -2,21 +2,6 @@
 # Docker compose file for production environment
 
 services:
-    db:
-        image: mariadb:10.9
-        container_name: lol-prod-db
-        restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
-            SERVICE_NAME: mariadb
-        profiles: ['prod', 'local']
-        volumes:
-            - lol-prod-db:/var/lib/mysql
-        networks:
-            - lol-db
     app:
         image: ghcr.io/phinocio/loadorderlibrary:latest
         container_name: lol-prod-app
@@ -24,18 +9,18 @@ services:
         entrypoint: sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate --force && exec php-fpm"
         env_file: .env
         user: '2100:2100'
-        profiles: ['prod', 'local']
         volumes:
-            - ./storage/:/var/www/storage
+            - ./storage:/srv/loadorderlibrary.com/storage
+            - /srv/api.loadorderlibrary.com/storage/app/uploads:/srv/loadorderlibrary.com/storage/app/uploads
         networks:
             - lol
             - lol-db
-        depends_on: [db]
+        external_links:
+            - lol-testing-db
     nginx:
         image: ghcr.io/phinocio/loadorderlibrary-nginx:latest
         container_name: lol-prod-nginx
         restart: unless-stopped
-        profiles: ['prod', 'local']
         networks:
             - lol
         depends_on: [app]
@@ -44,7 +29,7 @@ networks:
     lol:
         external: true
     lol-db:
-        driver: bridge
+        external: true
 
 volumes:
     lol-prod-db:

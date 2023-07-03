@@ -30,7 +30,7 @@ ARG user=lolprod
 ARG uid=2100
 RUN adduser -u $uid -D $user
 
-WORKDIR /var/www
+WORKDIR /srv/loadorderlibrary.com
 
 # Install system deps
 RUN apk update && apk add \
@@ -52,10 +52,10 @@ RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 # Copy project to container
 COPY . .
-COPY --from=build-prod-node /app/public /var/www/public
+COPY --from=build-prod-node /app/public ./public
 COPY --from=build-prod-composer /app/vendor ./vendor
 COPY --from=build-prod-composer /app/bootstrap ./bootstrap
 
-RUN chown -R $user:$user /var/www && rmdir /var/www/html
+RUN chown -R $user:$user /srv/loadorderlibrary.com
 
 USER $user
