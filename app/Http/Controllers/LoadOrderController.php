@@ -38,11 +38,17 @@ class LoadOrderController extends Controller
 
 		if ($request->query('game') && $request->query('game') !== 'all') {
 			$game = Game::whereName($request->query('game'))->first();
+			if (!$game) {
+				abort(404);
+			}
 			$query->whereGameId($game->id);
 		}
 
 		if ($request->query('author')) {
 			$author = User::whereName($request->query('author'))->first();
+			if (!$author) {
+				abort(404);
+			}
 			$query->whereUserId($author->id);
 		}
 

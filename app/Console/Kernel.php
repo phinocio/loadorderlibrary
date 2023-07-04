@@ -70,10 +70,10 @@ class Kernel extends ConsoleKernel
 			->daily()->at('01:30')
 			->environments(['production'])
 			->onSuccess(function () {
-				Log::channel('backups')->info('✅ Clean Backups');
+				Log::channel('backups')->info('✅ Run Backups');
 			})
 			->onFailure(function () {
-				Log::channel('backups')->error('❌ Clean Backups');
+				Log::channel('backups')->error('❌ Run Backups');
 			})
 			->appendOutputTo(storage_path('logs/scheduled-backups.log'));
 	}
