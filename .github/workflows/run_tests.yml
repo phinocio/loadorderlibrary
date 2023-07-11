@@ -2,10 +2,6 @@
 # Original configuration: https://ghygen.hi-folks.dev?code=6628d4c79a971c9a7816ba6fa5093d23
 name: Run tests with phpunit
 on:
-    push:
-        branches:
-            - main
-            - testing
     pull_request:
         branches:
             - main
