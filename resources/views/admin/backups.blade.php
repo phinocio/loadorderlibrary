@@ -10,7 +10,6 @@
 			<th scope="col">File</th>
 			<th scope="col">Size in MB</th>
 			<th scope="col">Created</th>
-			<th scope="col">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,14 +18,7 @@
 			<td><strong>{{ $backup->file }}</strong></td>
 			<td>{{ number_format($backup->size / 1000000, 2, '.', '') }}</td>
 			<td>{{ $backup->created_at->diffForHumans() }}</td>
-			<td class="d-flex">
-				<a class="ml-2 btn btn-secondary btn-sm text-white" href="/admin/backups/download/{{$backup->id}}" role="button">Download</a>
-				<form class="form-inline mx-2" method="POST" action="/admin/backups/delete/{{$backup->id}}">
-					@method('delete')
-					@csrf
-					<button class="ml-2 btn btn-danger btn-sm" href="#" role="button">Delete</button>
-				</form>
-			</td>
+			
 		</tr>
 		@endforeach
 	</tbody>

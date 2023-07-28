@@ -12,25 +12,25 @@ use Storage;
 
 class BackupWasSuccessfulListener
 {
-    /**
-     * Create the event listener.
-     */
-    public function __construct()
-    {
-        //
-    }
+  /**
+   * Create the event listener.
+   */
+  public function __construct()
+  {
+    //
+  }
 
-    /**
-     * Handle the event.
-     */
-    public function handle(BackupWasSuccessful $event): void
-    {
+  /**
+   * Handle the event.
+   */
+  public function handle(BackupWasSuccessful $event): void
+  {
 
-		if ($event->backupDestination->filesystemType() === 'localfilesystemadapter') {
-			$backup = new Backup();
-			$backup->file = $event->backupDestination->newestBackup()->path();
-			$backup->size = $event->backupDestination->newestBackup()->sizeInBytes();
-			$backup->save();
-		}
+    if ($event->backupDestination->filesystemType() === 'localfilesystemadapter') {
+      $backup = new Backup();
+      $backup->file = $event->backupDestination->newestBackup()->path();
+      $backup->size = $event->backupDestination->newestBackup()->sizeInBytes();
+      $backup->save();
     }
+  }
 }

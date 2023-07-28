@@ -168,29 +168,8 @@ class AdminController extends Controller
 		return view('admin.backups')->with(['backups' => $backups]);
 	}
 
-	public function downloadBackup($id)
-	{
-		$backup = Backup::find($id);
-
-		return \Storage::download('backups/' . $backup->file);
-	}
-
-	public function deleteBackup($id)
-	{
-		$backup = Backup::find($id);
-
-		// Delete on disk
-		Storage::disk('backups')->delete($backup->file);
-
-		// Delete from DB
-		$backup->delete();
-
-		return redirect()->back();
-	}
-
 	public function verify(User $user)
 	{
-
 		$user->is_verified = !$user->is_verified;
 		$user->save();
 
