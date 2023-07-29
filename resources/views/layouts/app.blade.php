@@ -85,9 +85,6 @@
 								<a class="dropdown-item bg-dark text-white" href="/admin/logs">
 									Logs
 								</a>
-								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.server-metrics') }}">
-									Server Stats
-								</a>
 								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.users') }}">
 									User Management
 								</a>
