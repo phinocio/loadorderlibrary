@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 	{
 		$this->registerPolicies();
 
-		Gate::define('viewLogViewer', function (?User $user) {
+		Gate::define('viewLogViewer', function (mixed $user) {
 			return $user?->isAdmin() ?? false;
 		});
 	}
