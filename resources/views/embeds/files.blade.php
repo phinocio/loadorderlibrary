@@ -47,31 +47,31 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="accordion p-0 mt-0" id="accordion">
-				<div class="accordion-item bg-dark mb-1" id='{{$file['name']}}'>
-					<div class="accordion-header d-flex justify-content-between align-items-center pe-3">
+				<div class="accordion-item bg-dark mb-1" id="{{$file['name']}}">
+					<!-- <div class="accordion-header d-flex justify-content-between align-items-center pe-3">
 						<h2 class="m-0 p-0" id="heading">
 							<button class="accordion-button collapsed bg-dark text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
 								<span class="text-white"><b>&plus;</b></span> <b>{{ $file['name'] }}</b>
 							</button>
 
 						</h2>
-					</div>
+					</div> -->
 					<div id="collapse" class="{{ $file['name'] }} accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#accordion">
 						<div class="accordion-body text-white p-0">
 							<form class="form">
-								<div class="input-group">
+								<!-- <div class="input-group">
 									<span class="input-group-text" id="filterlabel">Filter</span>
 									<input class="form-control" type="search" placeholder="Filter..." aria-labelledby="filterlabel" onkeyup="filter('filter1', 'list')" id="filter1">
-								</div>
+								</div> -->
 
-								@if($file['name'] == 'modlist.txt')
+								<!-- @if($file['name'] == 'modlist.txt')
 									<div class="form-check form-switch ms-10">
 										<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="toggleHidden()">
 										<label class="form-check-label" for="flexCheckDefault">
 											Show Disabled
 										</label>
 									</div>
-								@endif
+								@endif -->
 							</form>
 							<ul class="list-group bg-dark {{ $file['name'] }}" id="list">
 								@foreach($file['content'] as $row)
