@@ -194,6 +194,6 @@ return [
     |
     */
 
-    'same_site' => 'lax',
+    'same_site' => env('SAME_SITE_SESSION_COOKIE'),
 
 ];
