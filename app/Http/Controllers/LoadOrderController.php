@@ -350,8 +350,7 @@ class LoadOrderController extends Controller
 
 		array_push($files, ['name' => $fileName, 'content' => $parsedContent]);
 
-		return response(view('embeds.files')->with(['loadOrder' => $loadOrder, 'file' => $files[0]]), 200)
-			->withoutCookie('XSRF-TOKEN');
+		return response(view('embeds.files')->with(['loadOrder' => $loadOrder, 'file' => $files[0]]), 200);
 	}
 
 	/**
