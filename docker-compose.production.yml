@@ -16,7 +16,7 @@ services:
             - lol
             - lol-db
         external_links:
-            - lol-testing-db
+            - lol-prod-db
     nginx:
         image: ghcr.io/phinocio/loadorderlibrary-nginx:latest
         container_name: lol-prod-nginx
