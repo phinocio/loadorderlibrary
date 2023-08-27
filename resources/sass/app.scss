@@ -29,11 +29,13 @@ a {
 }
 
 .compare-choose {
-	.list1,
-	.compare,
-	.list2,
 	.filter-form {
 		width: 100%;
+	}
+
+	.list1, .list2 {
+		max-width: 45%;
+		min-width: 45%;
 	}
 }
 
