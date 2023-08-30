@@ -10,25 +10,25 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateLoadOrder extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
+	/**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
+	public function authorize()
+	{
+		return true;
+	}
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-			'name' => 'required|string|max:100',
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array
+	 */
+	public function rules()
+	{
+		return [
+			'list-name' => 'required|string|max:100',
 			'description' => 'string|nullable',
 			'game' => 'required',
 			'version' => ['string', 'nullable', new ValidSemver, 'max:15'],
@@ -40,7 +40,7 @@ class UpdateLoadOrder extends FormRequest
 			'existing.*' => 'string',
 			'expires' => 'string|nullable'
 		];
-    }
+	}
 
 	/**
 	 * Get the error messages for the defined validation rules.

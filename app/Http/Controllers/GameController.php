@@ -40,11 +40,11 @@ class GameController extends Controller
     public function store(Request $request)
     {
 		$validated = $request->validate([
-			'name' => 'required|max:32'
+			'game-name' => 'required|max:32'
 		]);
 
-		Game::create(['name' => $validated['name']]);
-		flash('Game ' . $validated['name'] . ' successfully added!')->success()->important();
+		Game::create(['name' => $validated['game-name']]);
+		flash('Game ' . $validated['game-name'] . ' successfully added!')->success()->important();
 		return redirect('/admin/games');
     }
 

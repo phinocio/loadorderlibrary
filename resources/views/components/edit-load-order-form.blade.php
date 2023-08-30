@@ -2,9 +2,9 @@
 	@method('PUT')
 	@csrf
 	<div class="form-group mb-3">
-		<label for="name">List Name</label>
-		<input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') ?? $loadOrder->name }}">
-		@error('name')
+		<label for="list-name">List Name</label>
+		<input name="list-name" type="text" class="form-control @error('list-name') is-invalid @enderror" id="list-name" value="{{ old('list-name') ?? $loadOrder->name }}">
+		@error('list-name')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
 		</span>

@@ -122,8 +122,8 @@ class LoadOrderController extends Controller
 		$loadOrder = new LoadOrder();
 		$loadOrder->user_id     = auth()->check() ? auth()->user()->id : null;
 		$loadOrder->game_id     = (int) $validated['game'];
-		$loadOrder->slug        = \App\Helpers\CreateSlug::new($validated['name']);
-		$loadOrder->name        = $validated['name'];
+		$loadOrder->slug        = \App\Helpers\CreateSlug::new($validated['list-name']);
+		$loadOrder->name        = $validated['list-name'];
 		$loadOrder->description = $validated['description'];
 		$loadOrder->version 	= $validated['version'];
 		// We simply remove the http/s of an input url so we can add https:// to all on display. If a site doesn't support TSL at this point, that's on them, I'm not linking to an insecure url.
@@ -277,7 +277,7 @@ class LoadOrderController extends Controller
 		}
 
 		$loadOrder->game_id     = (int) $validated['game'];
-		$loadOrder->name        = $validated['name'];
+		$loadOrder->name        = $validated['list-name'];
 		$loadOrder->description = $validated['description'];
 		$loadOrder->version 	= $validated['version'];
 		$loadOrder->website     = str_replace(['https://', 'http://'], '', $validated['website']);

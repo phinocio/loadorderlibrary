@@ -31,8 +31,8 @@
 						@csrf
 						<div class="form-group mb-3">
 							<label for="name">Game Name</label>
-							<input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
-							@error('name')
+							<input name="game-name" type="text" class="form-control @error('game-name') is-invalid @enderror" id="game-name" value="{{ old('game-name') }}">
+							@error('game-name')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>

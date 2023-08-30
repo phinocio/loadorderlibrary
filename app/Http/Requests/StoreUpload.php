@@ -30,16 +30,16 @@ class StoreUpload extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:100',
+            'list-name' => 'required|string|max:100',
             'description' => 'string|nullable',
             'game' => 'required',
-			'version' => ['string', 'nullable', new ValidSemver, 'max:15'],
-			'website' => 'string|nullable',
-			'discord' => 'string|nullable',
-			'readme' => 'string|nullable',
+            'version' => ['string', 'nullable', new ValidSemver, 'max:15'],
+            'website' => 'string|nullable',
+            'discord' => 'string|nullable',
+            'readme' => 'string|nullable',
             'files' => 'required',
             'files.*' => [new ValidMimetype, 'max:512', new ValidNumLines, new ValidFilename],
-			'expires' => 'string|nullable'
+            'expires' => 'string|nullable'
         ];
     }
 
@@ -50,9 +50,9 @@ class StoreUpload extends FormRequest
      */
     public function messages()
     {
-		$messages = [
-			'files.*.max' => 'Files may not be more than 512KB.'
-		];
+        $messages = [
+            'files.*.max' => 'Files may not be more than 512KB.'
+        ];
 
         return $messages;
     }
