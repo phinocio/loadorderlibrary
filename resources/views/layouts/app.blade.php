@@ -91,6 +91,9 @@
 								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.backup') }}">
 									Backups
 								</a>
+								<a class="dropdown-item bg-dark text-white" href="{{ route('admin.games') }}">
+									Games
+								</a>
 								@endif
 								<a class="dropdown-item bg-dark text-white" href="{{ route('user.profile') }}">
 									Account Management

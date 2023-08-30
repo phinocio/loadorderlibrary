@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\IsAdmin;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class GameController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware(IsAdmin::class)->only(['create', 'store']);
+	}
     /**
      * Display a listing of the resource.
      *
@@ -17,14 +23,12 @@ class GameController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function create(): View
     {
-        //
+        // Admin only.
+		$games = Game::all();
+		return view('admin.games')->with(['games' => $games]);
     }
 
     /**
@@ -35,7 +39,13 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$validated = $request->validate([
+			'name' => 'required|max:32'
+		]);
+
+		Game::create(['name' => $validated['name']]);
+		flash('Game ' . $validated['name'] . ' successfully added!')->success()->important();
+		return redirect('/admin/games');
     }
 
     /**
