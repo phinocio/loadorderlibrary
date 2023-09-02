@@ -30,7 +30,9 @@ class ValidFiles
 			'skyrim.ini',
 			'skyrimcustom.ini',
 			'skyrimprefs.ini',
-			'skyrimvr.ini'
+			'skyrimvr.ini',
+			'starfield.ini',
+			'starfieldprefs.ini',
 		];
 	}
 }
