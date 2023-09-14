@@ -55,27 +55,27 @@ class Kernel extends ConsoleKernel
 			})
 			->appendOutputTo(storage_path('logs/scheduled.log'));
 
-		$schedule->command('backup:clean')
-			->daily()->at('01:00')
-			->environments(['production'])
-			->onSuccess(function () {
-				Log::channel('backups')->info('✅ Clean Backups');
-			})
-			->onFailure(function () {
-				Log::channel('backups')->error('❌ Clean Backups');
-			})
-			->appendOutputTo(storage_path('logs/scheduled-backups.log'));
+		// $schedule->command('backup:clean')
+		// 	->daily()->at('01:00')
+		// 	->environments(['production'])
+		// 	->onSuccess(function () {
+		// 		Log::channel('backups')->info('✅ Clean Backups');
+		// 	})
+		// 	->onFailure(function () {
+		// 		Log::channel('backups')->error('❌ Clean Backups');
+		// 	})
+		// 	->appendOutputTo(storage_path('logs/scheduled-backups.log'));
 
-		$schedule->command('backup:run')
-			->daily()->at('01:30')
-			->environments(['production'])
-			->onSuccess(function () {
-				Log::channel('backups')->info('✅ Run Backups');
-			})
-			->onFailure(function () {
-				Log::channel('backups')->error('❌ Run Backups');
-			})
-			->appendOutputTo(storage_path('logs/scheduled-backups.log'));
+		// $schedule->command('backup:run')
+		// 	->daily()->at('01:30')
+		// 	->environments(['production'])
+		// 	->onSuccess(function () {
+		// 		Log::channel('backups')->info('✅ Run Backups');
+		// 	})
+		// 	->onFailure(function () {
+		// 		Log::channel('backups')->error('❌ Run Backups');
+		// 	})
+		// 	->appendOutputTo(storage_path('logs/scheduled-backups.log'));
 	}
 
 	/**
