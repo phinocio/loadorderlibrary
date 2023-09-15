@@ -98,6 +98,9 @@
 								<a class="dropdown-item bg-dark text-white" href="{{ route('user.profile') }}">
 									Account Management
 								</a>
+								<a class="dropdown-item bg-dark text-white" href="{{ route('user.api-tokens') }}">
+									API Tokens
+								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item bg-dark text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
 														document.getElementById('logout-form').submit();">

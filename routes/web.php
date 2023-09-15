@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,11 @@ Route::get('/compare/{load_order}/{load_order2}', 'ComparisonController@results'
 // User account management routes
 Route::get('/profile', 'UserController@index')->middleware(['auth', 'password.confirm'])->name('user.profile');
 Route::post('/user/delete', 'UserController@destroy')->name('user.delete-account');
+Route::get('/profile/api-tokens', function () {
+	return view('user.api-tokens');
+})->middleware(['auth', 'password.confirm'])->name('user.api-tokens');
+Route::post('/profile/api-tokens', 'UserController@api_tokens')->name('user.api-tokens.post');
+Route::delete('/profile/api-tokens/{tokenId}', 'UserController@delete_api_token')->name('user.api-tokens.post');
 
 // Admin routes
 Route::get('admin/stats', 'AdminController@stats')->name('admin.stats');
@@ -50,6 +57,6 @@ Route::get('/admin/games', 'GameController@create')->name('admin.games');
 Route::post('/admin/games', 'GameController@store')->name('admin.games.post');
 
 // Health Check for Uptime Kuma and others
-Route::get('/health', function() {
+Route::get('/health', function () {
 	return ['status' => 'healthy'];
 });
