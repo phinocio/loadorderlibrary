@@ -44,7 +44,7 @@ Route::get('/profile/api-tokens', function () {
 	return view('user.api-tokens');
 })->middleware(['auth', 'password.confirm'])->name('user.api-tokens');
 Route::post('/profile/api-tokens', 'UserController@api_tokens')->name('user.api-tokens.post');
-Route::delete('/profile/api-tokens/{tokenId}', 'UserController@delete_api_token')->name('user.api-tokens.post');
+Route::delete('/profile/api-tokens/{tokenId}', 'UserController@delete_api_token')->name('user.api-tokens.delete');
 
 // Admin routes
 Route::get('admin/stats', 'AdminController@stats')->name('admin.stats');
