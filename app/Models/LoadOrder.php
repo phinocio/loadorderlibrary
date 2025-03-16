@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,8 +12,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class LoadOrder extends Model
 {
     /** @use HasFactory<\Database\Factories\LoadOrderFactory> */
-    use HasFactory, SoftDeletes;
+    use HasFactory, Sluggable, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<string>
+     */
     protected $fillable = [
         'name',
         'slug',
@@ -53,5 +59,19 @@ class LoadOrder extends Model
     public function files(): BelongsToMany
     {
         return $this->belongsToMany(File::class)->withTimestamps();
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array<string, array<string, string>>
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
     }
 }
