@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('game_id')->constrained('games');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('version')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->string('verison')->nullable()->default(null);
             $table->string('discord')->nullable()->default(null);
