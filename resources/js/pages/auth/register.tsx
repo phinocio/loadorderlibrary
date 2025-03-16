@@ -11,7 +11,6 @@ import AuthLayout from '@/layouts/auth-layout';
 
 type RegisterForm = {
     name: string;
-    email: string;
     password: string;
     password_confirmation: string;
 };
@@ -19,7 +18,6 @@ type RegisterForm = {
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm<Required<RegisterForm>>({
         name: '',
-        email: '',
         password: '',
         password_confirmation: '',
     });
@@ -39,34 +37,18 @@ export default function Register() {
                     <div className="grid gap-2">
                         <Label htmlFor="name">Name</Label>
                         <Input
-                            id="name"
+                            id="Username"
                             type="text"
                             required
                             autoFocus
                             tabIndex={1}
-                            autoComplete="name"
+                            autoComplete="username"
                             value={data.name}
                             onChange={(e) => setData('name', e.target.value)}
                             disabled={processing}
-                            placeholder="Full name"
+                            placeholder="Username"
                         />
                         <InputError message={errors.name} className="mt-2" />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">Email address</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            required
-                            tabIndex={2}
-                            autoComplete="email"
-                            value={data.email}
-                            onChange={(e) => setData('email', e.target.value)}
-                            disabled={processing}
-                            placeholder="email@example.com"
-                        />
-                        <InputError message={errors.email} />
                     </div>
 
                     <div className="grid gap-2">
@@ -101,7 +83,7 @@ export default function Register() {
                         <InputError message={errors.password_confirmation} />
                     </div>
 
-                    <Button type="submit" className="mt-2 w-full" tabIndex={5} disabled={processing}>
+                    <Button type="submit" className="mt-2 w-full bg-green-500" tabIndex={5} disabled={processing}>
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                         Create account
                     </Button>
