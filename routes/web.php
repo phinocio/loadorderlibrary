@@ -1,10 +1,18 @@
 <?php
 
+use App\Models\LoadOrder;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    $latestLoadOrders = LoadOrder::with(['author', 'game'])
+        ->latest()
+        ->take(5)
+        ->get();
+
+    return Inertia::render('home', [
+        'latestLoadOrders' => $latestLoadOrders,
+    ]);
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
